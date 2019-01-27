@@ -1,0 +1,243 @@
+/*
+GLOBAL VARIABLES
+*/
+:root{
+--primary-theme-color:#0000ff;
+--default-background: #75a3a3;
+--default-black:#000;
+--default-white:#fff;
+--default-danger:#ff3333;
+}
+
+
+/*
+GLOBAL CONFIGURATION
+*/
+
+html,
+body{
+	font-family: "lato",san serif,tahoma;
+	font-size: 20px;
+}
+
+body{
+	padding: 0;
+	margin: 0;
+	/* //background-color: var(--default-background,#75a3a3); */
+	color: var(--default-white,#fff);	
+}
+
+.front-page{
+  /* margin-bottom: 15%; */
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(img/ballot-large.jpg);
+  background-size: cover;
+  height: 90vh;
+}
+
+
+
+/*
+HEADER AREA
+*/
+
+header{
+	background-color: var(--primary-theme-color,#0099ff);
+	width: 100%;
+	height: 4em;
+	text-align: center;
+	position: relative;
+}
+
+.header-logo a:link,.header-logo a:visited, .header-logo a:active{
+ float: left;
+ margin: .5em 0 0 4em;
+ color: var(--default-white,#fff);
+ background-color: rgba(255,255,255,0.4);
+ border-bottom: 3px solid var(--default-white,#fff);
+ text-decoration: none;
+ text-transform: uppercase;
+}
+
+.header-logo span{
+	font-size: 2em;
+	background-color: white;
+	color: var(--default-black,#000);
+}
+
+/*
+NAVIGATION AREA
+*/
+
+
+nav ul{
+   margin: 0;
+   list-style: none;
+}
+nav ul li a:visited,nav ul li a:link,nav ul li a:active{
+   margin: 1em 2em 1em 0;
+   padding: .6em 1em;
+   float: right;
+   transition: .2s ease-in;
+   color:var(--default-white,#fff);
+   text-decoration: none;
+   text-transform: uppercase;
+}
+
+
+
+nav ul li a:hover{
+    /*background-color: rgba(255,255,255,0.4);*/
+    border-bottom: 3px solid var(--default-white,#fff);
+	cursor: pointer;
+	
+}
+
+/*
+FORM AREA
+*/
+.form{
+  width: 100%;
+  text-align: center;
+}
+.form-login{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.form-element{
+	margin-top: .6em;
+} 
+.form-element a.btn-signup,p.login{
+  width: 40%;
+  display: inline-block;
+  margin-left: 0;
+}
+.form-element p.login a:link,.form-element p.login a:visited{
+	color: var(--default-white,#fff);
+	text-decoration: none;
+	margin-left: 1em;
+}
+.form-element p.forgot a:link,.form-element p.forgot a:visited{
+	color: var(--default-white,#fff);
+	text-decoration: none;
+	margin-left: 1em;
+}
+
+.form-element p a:hover{
+	border-bottom: 2px solid var(--default-white,#fff);
+}
+
+.form-align .form-element input{
+  display: inline-block;
+  width: 40%;
+}
+
+.form__input{
+	width:50%;
+	padding: .5rem .7rem;
+	border-radius: 2px;
+	border: none;
+	font-size: 1rem;
+	border-bottom: 3px solid transparent;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s;
+}
+
+.form__input:focus {
+  outline: none;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid #55c57a;
+}
+.form__input:focus:invalid {
+  border-bottom: 3px solid #ff7730;
+}
+.form__input::-webkit-input-placeholder {
+  color: #999;
+  text-transform: capitalize;
+}
+.form-heading{
+	text-align: center;
+	color: var(--default-black,#000);
+}
+.form-heading h3{
+  font-size: 2em;
+  text-transform: uppercase;
+  margin-bottom: .2em;
+}
+.form-heading p{
+	font-size: 1em;
+	text-transform: capitalize;
+}
+
+
+#info {
+    margin-left: 23%;
+    margin-right: -30%;
+}
+
+#form-info__warning{
+	background-color: var(--default-danger,#ff0000);
+	width: 50%;
+	border:1px solid var(--high-red,#ff0000);
+	border-radius: 4px;
+}
+#form-info__success{
+	background-color: var(--high-green,#009933);
+	width: 50%;
+	border:1px solid var(--greener,#00802b);
+	border-radius: 4px;
+}
+
+/*
+BTN AREA
+*/
+
+.btn, .btn:link, .btn:visited {
+  width: 50%;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  padding: .6rem 1rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+  position: relative;
+  font-size: 1rem;
+  border: none;
+  color: inherit;
+}
+.btn:hover {
+  outline: none;
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.5);
+  opacity: 0;
+}
+.btn:active, .btn:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary{
+	background-color: var(--primary-theme-color,#0099ff)
+}
+
+
+/*
+FOOTER AREA
+*/
+
+footer{
+	text-align: center;
+  position: fixed;
+  width: 100%;
+  margin-top: 2%;
+}
+
