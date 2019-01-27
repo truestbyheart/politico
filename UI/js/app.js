@@ -88,8 +88,56 @@ const formValidator = () => {
             email.classList.remove('form-error');
             data['email'] = email.value;
         }
-    }else{
-        notify.innerHTML=`<span>please before you continue agree to our terms and service</span>`
+    } else {
+        notify.innerHTML = `<span>please before you continue agree to our terms and service</span>`
     }
 
 }
+
+const admintab = (value) => {
+    let party = document.getElementById('sect-1');
+    let office = document.getElementById('sect-2');
+    if (value === 'party') {
+        office.classList.add('hidden');
+        party.classList.add('show');
+        party.classList.remove('hidden');
+    } else {
+        office.classList.remove('hidden');
+        party.classList.remove('show');
+        party.classList.add('hidden');
+    }
+}
+
+const popUpTab = (value) => {
+    let party = document.getElementById('pop-party');
+    let office = document.getElementById('pop-office');
+
+    if (value === 'party') {
+        office.classList.add('hidden');
+        party.classList.add('show');
+        party.classList.remove('hidden');
+    } else {
+        office.classList.remove('hidden');
+        party.classList.remove('show');
+        party.classList.add('hidden');
+    }
+}
+
+const pop = () => {
+    let pop = document.getElementById('pop');
+    pop.classList.remove('hidden');
+    pop.classList.add('show');
+}
+
+const exit = () => {
+    let pop = document.getElementById('pop');
+    pop.classList.add('hidden');
+    pop.classList.remove('show');
+}
+
+const yesClick = (btn) => {
+   // let btn = document.getElementById('btn');
+    btn.classList.toggle('btn-agree');
+    btn.classList.toggle('btn-yes');
+}
+ 
