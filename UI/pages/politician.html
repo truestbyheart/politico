@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Politico</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="./../css/style.css" />
+</head>
+
+<body>
+    <header class="politician-header">
+        <div class="header-logo">
+            <a href="./index.html"> <span>P</span>olitico </a>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <div class="profile">
+                        <img src="./../img/icons/user.svg" alt="user-profile" class="profile__pic" />
+                        <p class="profile__name">mr.politician</p>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="politician-page">
+        <div class="sidebar">
+            <a href="javascript:void(0)" class="sidebar-list__item" onclick="admintab('office')">office</a>
+        </div>
+        <div class="politician-content">
+            <section class="office show" id="sect-2">
+                <table class="tabled-data">
+                    <tr>
+                        <th>Office</th>
+                        <th>interest</th>
+                    </tr>
+
+                    <tr>
+                        <td>Member of parliment</td>
+                        <td>
+                            <a href="javascript:void(0)" class="btn btn-agree" onclick="yesClick(this)" >interested</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>District executive officer</td>
+                        <td>
+                            <a href="javascript:void(0)" class="btn btn-agree" onclick="yesClick(this)">interested</a>
+                        </td>
+                    </tr>
+
+                </table>
+            </section>
+
+
+        </div>
+    </main>
+    <footer class="politician-footer">
+        &copy; Politico 2019
+    </footer>
+    <script src="./../js/app.js"></script>
+</body>
+
+</html>
