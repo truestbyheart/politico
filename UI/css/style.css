@@ -79,11 +79,6 @@ UTILITY CLASSES
 .show {
   display: block;
 }
-.stat-num{
-  position: absolute;
-  font-size: 1.8em;
-  margin-left: .3em;
-}
 
 /*
 PROFILEAREA
@@ -107,12 +102,6 @@ PROFILEAREA
   text-transform: capitalize;
 }
 
-.profile__link:link,
-.profile__link:visited {
-  top: -0.5em;
-  margin-left: 2em;
-  text-transform: capitalize;
-}
 /*
 SIDEBAR AREA
 */
@@ -497,14 +486,6 @@ BTN AREA
   text-decoration: none;
   font-size: 1em;
 }
-.btn-vote:link,
-.btn-vote:visited {
-  color: var(--default-black, #000);
-  text-decoration: none;
-  background-color: var(--default-white, #fff);
-  text-align: center;
-  font-size: 1em;
-}
 
 /*
 FOOTER AREA
@@ -591,13 +572,4 @@ POPUP AREA
 
 .pop-up__tab a:active {
   background-color: rgba(0, 0, 0, 0.2);
-}
-
-.li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.li li:not(:last-child) {
-  border-bottom: 1px solid var(--default-white, #fff);
 }
