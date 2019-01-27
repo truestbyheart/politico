@@ -134,10 +134,3 @@ const exit = () => {
     pop.classList.add('hidden');
     pop.classList.remove('show');
 }
-
-const yesClick = (btn) => {
-   // let btn = document.getElementById('btn');
-    btn.classList.toggle('btn-agree');
-    btn.classList.toggle('btn-yes');
-}
- 
