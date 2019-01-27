@@ -136,8 +136,35 @@ const exit = () => {
 }
 
 const yesClick = (btn) => {
-   // let btn = document.getElementById('btn');
+    // let btn = document.getElementById('btn');
     btn.classList.toggle('btn-agree');
     btn.classList.toggle('btn-yes');
 }
- 
+
+const validateEmail = (email) => {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+const sendResetLink = () => {
+    let notify = document.getElementById('notify');
+    let email = document.getElementById('email');
+
+    if (validateEmail(email.value)) {
+        notify.innerHTML = `
+     <div class = "success">
+      <p> check your email
+      for the reset link</p>
+     </div>
+    
+     `
+    } else {
+        notify.innerHTML = `
+        <div class="warning">
+        <p>
+            please enter a valid or the email tou used to sign up </p>
+        </div>
+        
+        `
+    }
+}
