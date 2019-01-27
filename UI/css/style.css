@@ -7,7 +7,8 @@ GLOBAL VARIABLES
   --default-black: #000;
   --default-white: #fff;
   --default-danger: #ff3333;
-  --admin-color: #2C3E50;
+  --admin-color: #2c3e50;
+  --politician-page: #336e7b;
 }
 
 /*
@@ -47,15 +48,25 @@ PAGES STYLE
 
 .admin-page {
   position: relative;
-  background-color: RGBA(44, 62, 80, .5);
+  background-color: RGBA(44, 62, 80, 0.5);
 }
 
-.admin-footer {
+.admin-footer,
+.politician-footer {
   height: 8vh;
   margin-top: 0%;
-  background-color: var(--admin-color, #2C3E50);
+  background-color: var(--admin-color, #2c3e50);
   color: #fff;
   position: absolute;
+}
+
+.politician-page {
+  position: relative;
+  background-color: RGBA(44, 62, 80, 0.5);
+}
+.politician-footer {
+  background-color: var(--politician-page, #336e7b);
+  margin-top: -2%;
 }
 
 /*
@@ -87,7 +98,7 @@ PROFILEAREA
 .profile__name {
   position: absolute;
   margin-left: 3em;
-  font-size: .9em;
+  font-size: 0.9em;
   text-transform: capitalize;
 }
 
@@ -97,24 +108,26 @@ SIDEBAR AREA
 .sidebar {
   height: 90vh;
   width: 8em;
-  background-color: var(--admin-color, #2C3E50);
+  background-color: var(--admin-color, #2c3e50);
   position: absolute;
   text-align: center;
 }
 
+.politician-page .sidebar {
+  background-color: var(--politician-page, #336e7b);
+}
 
 .sidebar-list__item:link,
 .sidebar-list__item:visited {
   color: inherit;
   display: block;
   text-decoration: none;
-  padding: .4em 1.2em;
+  padding: 0.4em 1.2em;
   text-transform: uppercase;
-
 }
 
 .sidebar-list__item:hover {
-  background-color: rgba(255, 255, 255, .4);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .sidebar-list__item:active {
@@ -130,6 +143,22 @@ ADMIN-CONTENT AREA
 }
 
 /*
+POLITICIAN-CONTENT AREA
+*/
+.politician-content {
+  height: 90vh;
+  margin-left: 8.2em;
+  margin-bottom: 1em;
+}
+
+.office,
+.party {
+  width: 43em;
+  position: absolute;
+  padding: 1em;
+}
+
+/*
 HEADER AREA
 */
 
@@ -142,11 +171,14 @@ header {
 }
 
 .admin-header {
-  background-color: var(--admin-color, #2C3E50);
-
+  background-color: var(--admin-color, #2c3e50);
+}
+.politician-header {
+  background-color: var(--politician-page, #336e7b);
 }
 
-.admin-header nav{
+.admin-header nav,
+.politician-header nav {
   margin-left: 57%;
 }
 
@@ -249,7 +281,6 @@ p.login {
 
 .form__input:focus:invalid {
   border-bottom: 3px solid #ff0000;
-
 }
 
 .form__input::-webkit-input-placeholder {
@@ -258,7 +289,7 @@ p.login {
 }
 
 .form__input:-internal-autofill-selected {
-  background-color: rgba(255, 255, 255, .4) !important;
+  background-color: rgba(255, 255, 255, 0.4) !important;
 }
 
 .form-error {
@@ -275,7 +306,6 @@ p.login {
   background-repeat: no-repeat;
   background-position: 100% 0px;
 }
-
 
 .form-heading {
   text-align: center;
@@ -342,19 +372,17 @@ form style only for signup
 /*
 popup form style only
 */
-.pop_input{
-background-color: var(--default-white,#fff);
-
+.pop_input {
+  background-color: var(--default-white, #fff);
 }
 
 .pop_input::-webkit-input-placeholder {
-  color: var(--default-black,#000);
+  color: var(--default-black, #000);
 }
 
-.pop-close{
+.pop-close {
   margin-left: 40%;
   position: absolute;
-
 }
 
 /*
@@ -436,10 +464,27 @@ BTN AREA
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
-.btn-pop{
-  background-color: var(--admin-color,#2C3E50);
+.btn-pop {
+  background-color: var(--admin-color, #2c3e50);
   width: 12em !important;
+}
 
+.btn-agree:link,
+.btn-agree:visited {
+  color: var(--default-black, #000);
+  text-decoration: none;
+  background-color: var(--default-white, #fff);
+  text-align: center;
+  font-size: 1em;
+}
+
+.btn-yes:link,
+.btn-yes:visited {
+  background-color: var(--high-green, #009933);
+  color: var(--default-white, #fff);
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
 }
 
 /*
@@ -489,7 +534,7 @@ th {
 }
 
 .tabled-data tr:nth-child(even) {
-  background-color: var(--admin-color, #2C3E50);
+  background-color: var(--admin-color, #2c3e50);
 }
 
 .icon {
@@ -503,7 +548,7 @@ POPUP AREA
 
 .pop-up {
   position: fixed;
-  background-color: rgba(0, 0, 0, .95);
+  background-color: rgba(0, 0, 0, 0.95);
   z-index: 300;
   height: 100vh;
   width: 100vw;
@@ -516,15 +561,15 @@ POPUP AREA
   display: inline-block;
   text-decoration: none;
   color: inherit;
-  padding: .4em 1.2em;
+  padding: 0.4em 1.2em;
   border: 1px solid var(--default-white, #fff);
-  margin:.4em 0 0 -.4em;
+  margin: 0.4em 0 0 -0.4em;
 }
 
-.pop-up__tab a:hover{
+.pop-up__tab a:hover {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-.pop-up__tab a:active{
+.pop-up__tab a:active {
   background-color: rgba(0, 0, 0, 0.2);
 }
