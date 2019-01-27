@@ -88,83 +88,8 @@ const formValidator = () => {
             email.classList.remove('form-error');
             data['email'] = email.value;
         }
-    } else {
-        notify.innerHTML = `<span>please before you continue agree to our terms and service</span>`
+    }else{
+        notify.innerHTML=`<span>please before you continue agree to our terms and service</span>`
     }
 
-}
-
-const admintab = (value) => {
-    let party = document.getElementById('sect-1');
-    let office = document.getElementById('sect-2');
-    if (value === 'party') {
-        office.classList.add('hidden');
-        party.classList.add('show');
-        party.classList.remove('hidden');
-    } else {
-        office.classList.remove('hidden');
-        party.classList.remove('show');
-        party.classList.add('hidden');
-    }
-}
-
-const popUpTab = (value) => {
-    let party = document.getElementById('pop-party');
-    let office = document.getElementById('pop-office');
-
-    if (value === 'party') {
-        office.classList.add('hidden');
-        party.classList.add('show');
-        party.classList.remove('hidden');
-    } else {
-        office.classList.remove('hidden');
-        party.classList.remove('show');
-        party.classList.add('hidden');
-    }
-}
-
-const pop = () => {
-    let pop = document.getElementById('pop');
-    pop.classList.remove('hidden');
-    pop.classList.add('show');
-}
-
-const exit = () => {
-    let pop = document.getElementById('pop');
-    pop.classList.add('hidden');
-    pop.classList.remove('show');
-}
-
-const yesClick = (btn) => {
-    // let btn = document.getElementById('btn');
-    btn.classList.toggle('btn-agree');
-    btn.classList.toggle('btn-yes');
-}
-
-const validateEmail = (email) => {
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-}
-
-const sendResetLink = () => {
-    let notify = document.getElementById('notify');
-    let email = document.getElementById('email');
-
-    if (validateEmail(email.value)) {
-        notify.innerHTML = `
-     <div class = "success">
-      <p> check your email
-      for the reset link</p>
-     </div>
-    
-     `
-    } else {
-        notify.innerHTML = `
-        <div class="warning">
-        <p>
-            please enter a valid or the email tou used to sign up </p>
-        </div>
-        
-        `
-    }
 }
