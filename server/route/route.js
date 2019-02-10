@@ -27,4 +27,23 @@ const postParty = (req, res) => {
   }
 };
 
-module.exports = { defaultRoute, postParty };
+const getParties = (req, res) => {
+  if (Parties.length === 0) {
+    res.json({
+      status: 404,
+      message: 'There is no data at the moment',
+    });
+  } else {
+    res.json({
+      status: 200,
+      Data: Parties,
+    });
+  }
+};
+
+module.exports = {
+  defaultRoute,
+  postParty,
+  getParties,
+  Parties,
+};
