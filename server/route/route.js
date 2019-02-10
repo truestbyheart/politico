@@ -55,10 +55,34 @@ const getParty = (req, res) => {
     });
   }
 };
+
+const editParty = (req, res) => {
+  const id = req.params.id;
+  const oldData = Parties;
+  const newData = [];
+  const party = req.body;
+  party.id = Number(id);
+  newData.push(party);
+  const editedParty = oldData.map(obj => newData.find(o => o.id === obj.id));
+  if (editedParty[0] === undefined) {
+    res.json({
+      status: 404,
+      message: 'There is no party with the specified ID',
+    });
+  } else {
+    res.json({
+      status: 200,
+      message: 'The data has been succefully edited',
+      Data: editedParty,
+    });
+  }
+};
+
 module.exports = {
   defaultRoute,
   postParty,
   getParties,
   Parties,
   getParty,
+  editParty,
 };

@@ -9,6 +9,7 @@ chai.use(require('chai-things'));
 // eslint-disable-next-line no-unused-vars
 const should = chai.should();
 const { app } = require('../server.js');
+const { Parties } = require('./../route/route');
 
 chai.use(chaiHttp);
 
@@ -31,6 +32,7 @@ describe('POST /parties', () => {
       });
   });
   it('Should auto increment by 1', (done) => {
+    Parties.length = 0;
     const party = {
       name: 'civic union front',
       hqAddress: 'p.o bo 1234, dar-es-salaam',
@@ -49,7 +51,7 @@ describe('POST /parties', () => {
       .end((err, res) => {
         res.body.should.have.status(201);
         res.body.should.be.a('object');
-        res.body.should.have.property('Data').be.an('array').that.contains.something.like({ id: 2 });
+        res.body.should.have.property('Data').be.an('array').that.contains.something.like({ id: 1 });
       });
     chai
       .request(app)
@@ -58,15 +60,15 @@ describe('POST /parties', () => {
       .end((err, res) => {
         res.body.should.have.status(201);
         res.body.should.be.a('object');
-        res.body.should.have.property('Data').be.an('array').that.contains.something.like({ id: 3 });
+        res.body.should.have.property('Data').be.an('array').that.contains.something.like({ id: 2 });
         done();
       });
   });
   it('Should not duplicate party', (done) => {
     const party = {
-      name: 'chama cha mapinduzi',
+      name: 'civic union front',
       hqAddress: 'p.o bo 1234, dar-es-salaam',
-      logoUrl: '/img/ccm.png',
+      logoUrl: '/img/cuf.png',
     };
 
     chai
