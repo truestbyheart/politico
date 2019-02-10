@@ -1,7 +1,7 @@
 
 [![Build Status](https://travis-ci.com/truestbyheart/politico.svg?branch=develop)](https://travis-ci.com/truestbyheart/politico)
 [![Licence](https://img.shields.io/github/license/shemaeric/politico.svg?style=plastic)](https://img.shields.io/github/license/shemaeric/politico.svg?style=plastic)
-[![Coverage Status](https://coveralls.io/repos/github/truestbyheart/politico_api/badge.svg?branch=develop)](https://coveralls.io/github/truestbyheart/politico_api?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/truestbyheart/politico/badge.svg?branch=develop)](https://coveralls.io/github/truestbyheart/politico?branch=develop)
 
 # Getting started 
 first of all the API is hosted on heroku at the link bellow
