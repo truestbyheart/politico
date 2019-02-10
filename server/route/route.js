@@ -134,6 +134,21 @@ const getOffices = (req, res) => {
   }
 };
 
+const getOffice = (req, res) => {
+  const id = req.params.id;
+  if (Offices[id - 1] === undefined) {
+    res.json({
+      status: 404,
+      message: 'There is no office with the specified ID',
+    });
+  } else {
+    res.json({
+      status: 200,
+      Data: Offices[id - 1],
+    });
+  }
+};
+
 module.exports = {
   defaultRoute,
   postParty,
@@ -145,4 +160,5 @@ module.exports = {
   postOffice,
   Offices,
   getOffices,
+  getOffice,
 };
