@@ -1,5 +1,10 @@
 const { app, PORT } = require('./config/config');
-const { defaultRoute, postParty, getParties } = require('./route/route');
+const {
+  defaultRoute,
+  postParty,
+  getParties,
+  getParty,
+} = require('./route/route');
 
 
 app.route('/')
@@ -9,6 +14,11 @@ app
   .route('/v1/parties')
   .post(postParty)
   .get(getParties);
+
+app
+  .route('/v1/parties/:id')
+  .get(getParty);
+
 
 app.listen(PORT);
 
