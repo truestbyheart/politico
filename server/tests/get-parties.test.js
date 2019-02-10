@@ -14,6 +14,7 @@ const { Parties } = require('../route/route');
 chai.use(chaiHttp);
 
 describe('GET /parties', () => {
+  Parties.length = 0;
   const party = {
     name: 'civic union front',
     hqAddress: 'p.o bo 1234, dar-es-salaam',
