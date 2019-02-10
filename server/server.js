@@ -10,6 +10,7 @@ const {
   getOffices,
   getOffice,
   editOffice,
+  deleteOffice,
 } = require('./route/route');
 
 
@@ -35,7 +36,8 @@ app
 app
   .route('/v1/offices/:id')
   .get(getOffice)
-  .patch(editOffice);
+  .patch(editOffice)
+  .delete(deleteOffice);
 
 
 app.listen(PORT);

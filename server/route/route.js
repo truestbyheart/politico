@@ -172,6 +172,22 @@ const editOffice = (req, res) => {
   }
 };
 
+const deleteOffice = (req, res) => {
+  const id = req.params.id;
+  if (Offices[id - 1] === undefined) {
+    res.json({
+      status: 404,
+      message: 'There is no office with the specified ID',
+    });
+  } else {
+    delete Offices[id - 1];
+    res.json({
+      status: 200,
+      message: 'The office has been deleted successfully',
+    });
+  }
+};
+
 module.exports = {
   defaultRoute,
   postParty,
@@ -181,8 +197,9 @@ module.exports = {
   editParty,
   deleteParty,
   postOffice,
+  getOffice,
   Offices,
   getOffices,
-  getOffice,
   editOffice,
+  deleteOffice,
 };
