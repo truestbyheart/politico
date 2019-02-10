@@ -120,6 +120,20 @@ const postOffice = (req, res) => {
   }
 };
 
+const getOffices = (req, res) => {
+  if (Offices.length === 0) {
+    res.json({
+      status: 404,
+      message: 'There is no data at the moment',
+    });
+  } else {
+    res.json({
+      status: 200,
+      Data: Offices,
+    });
+  }
+};
+
 module.exports = {
   defaultRoute,
   postParty,
@@ -130,4 +144,5 @@ module.exports = {
   deleteParty,
   postOffice,
   Offices,
+  getOffices,
 };

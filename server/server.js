@@ -7,6 +7,7 @@ const {
   editParty,
   deleteParty,
   postOffice,
+  getOffices,
 } = require('./route/route');
 
 
@@ -26,7 +27,8 @@ app
 
 app
   .route('/v1/offices')
-  .post(postOffice);
+  .post(postOffice)
+  .get(getOffices);
 
 
 app.listen(PORT);
