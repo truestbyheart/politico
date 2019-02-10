@@ -8,23 +8,23 @@ chai.use(require('chai-things'));
 
 // eslint-disable-next-line no-unused-vars
 const should = chai.should();
-const { app } = require('../server.js');
-const { Parties } = require('./../route/route');
+const { app } = require('../server');
+const { Offices } = require('./../route/route');
 
 chai.use(chaiHttp);
 
-describe('POST /parties', () => {
+describe('POST /offices', () => {
   it('Should add a new party ', (done) => {
-    const party = {
-      name: 'chama cha mapinduzi',
-      hqAddress: 'p.o bo 1234, dar-es-salaam',
-      logoUrl: '/img/ccm.png',
+    Offices.length = 0;
+    const office = {
+      name: 'member of parliament',
+      type: 'legislature',
     };
 
     chai
       .request(app)
-      .post('/v1/parties')
-      .send(party)
+      .post('/v1/offices')
+      .send(office)
       .end((err, res) => {
         res.should.have.status(201);
         res.should.be.a('object');
@@ -32,68 +32,70 @@ describe('POST /parties', () => {
       });
   });
   it('Should auto increment by 1', (done) => {
-    Parties.length = 0;
-    const party = {
-      name: 'civic union front',
-      hqAddress: 'p.o bo 1234, dar-es-salaam',
-      logoUrl: '/img/cuf.png',
+    Offices.length = 0;
+    const office = {
+      name: 'Deputy Speaker',
+      type: 'legislature',
     };
-    const party2 = {
-      name: 'chama cha maendeleo na demokrasia',
-      hqAddress: 'p.o bo 1234, dar-es-salaam',
-      logoUrl: '/img/chadema.png',
+    const office2 = {
+      name: 'Speaker',
+      type: 'legislature',
     };
 
     chai
       .request(app)
-      .post('/v1/parties')
-      .send(party)
+      .post('/v1/offices')
+      .send(office)
       .end((err, res) => {
         res.body.should.have.status(201);
         res.body.should.be.a('object');
-        res.body.should.have.property('Data').be.an('array').that.contains.something.like({ id: 1 });
+        res.body.should.have
+          .property('Data')
+          .be.an('array')
+          .that.contains.something.like({ id: 1 });
       });
     chai
       .request(app)
-      .post('/v1/parties')
-      .send(party2)
+      .post('/v1/offices')
+      .send(office2)
       .end((err, res) => {
         res.body.should.have.status(201);
         res.body.should.be.a('object');
-        res.body.should.have.property('Data').be.an('array').that.contains.something.like({ id: 2 });
+        res.body.should.have
+          .property('Data')
+          .be.an('array')
+          .that.contains.something.like({ id: 2 });
         done();
       });
   });
   it('Should not duplicate party', (done) => {
-    const party = {
-      name: 'civic union front',
-      hqAddress: 'p.o bo 1234, dar-es-salaam',
-      logoUrl: '/img/cuf.png',
+    const office = {
+      name: 'Deputy Speaker',
+      type: 'legislature',
     };
 
     chai
       .request(app)
-      .post('/v1/parties')
-      .send(party)
+      .post('/v1/offices')
+      .send(office)
       .end((err, res) => {
         res.body.should.have.status(200);
         res.body.should.be.a('object');
         res.body.should.have
           .property('message')
-          .eql('The party already exists');
+          .eql('The office already exists');
         done();
       });
   });
 
   it('should not receive data against its entity specs', (done) => {
-    const party = {
-      name: 'chama cha mapinduzi',
-      hqAddress: 'p.o bo 1234, dar-es-salaam',
+    const office = {
+      name: 'Deputy Speaker',
     };
     chai
       .request(app)
       .post('/v1/parties')
-      .send(party)
+      .send(office)
       .end((err, res) => {
         res.body.should.have.status(200);
         res.body.should.be.a('object');
@@ -105,15 +107,14 @@ describe('POST /parties', () => {
   });
 
   it('should be case sensitive', (done) => {
-    const party = {
-      name: 'chama cha mapinduzi',
-      hqaddress: 'p.o bo 1234, dar-es-salaam',
-      logoUrl: '/img/ccm.png',
+    const office = {
+      name: 'Deputy Speaker',
+      Type: 'legislature',
     };
     chai
       .request(app)
       .post('/v1/parties')
-      .send(party)
+      .send(office)
       .end((err, res) => {
         res.body.should.have.status(200);
         res.body.should.be.a('object');
