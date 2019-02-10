@@ -4,6 +4,7 @@ const {
   postParty,
   getParties,
   getParty,
+  editParty,
 } = require('./route/route');
 
 
@@ -17,7 +18,8 @@ app
 
 app
   .route('/v1/parties/:id')
-  .get(getParty);
+  .get(getParty)
+  .patch(editParty);
 
 
 app.listen(PORT);
