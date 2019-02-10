@@ -13,35 +13,36 @@ const expect = chai.expect;
 const { app } = require('../server');
 const { Parties } = require('../route/route');
 
-describe('GET /parties/:id', () => {
+
+describe('DELETE /parties', () => {
   it('should send a message if there is no party', (done) => {
     Parties.length = 0;
     chai.request(app)
-      .get('/v1/parties/5')
+      .delete('/v1/parties/5')
       .end((err, res) => {
         expect(res.status).to.equal(200);
-        expect(res.body.status).to.equal(404);
-        expect(res.body.message).to.equal('There is no party with the specified ID');
+        expect(res.body).to.have.property('status').eql(404);
+        expect(res.body).to.have.property('message').eql('There is no party with the specified ID');
         done();
       });
   });
-  it('should return the required party with the id', (done) => {
-    const party = {
-      name: 'chama cha mapinduzi',
-      hqAddress: 'p.o bo 1234, dar-es-salaam',
-      logoUrl: '/img/ccm.png',
-    };
 
-    chai
-      .request(app)
+  it('should successful message', (done) => {
+    const party = {
+      name: 'civic union front',
+      hqAddress: 'p.o bo 1234, dar-es-salaam',
+      logoUrl: '/img/cuf.png',
+    };
+    chai.request(app)
       .post('/v1/parties')
       .send(party)
       .end();
     chai.request(app)
-      .get('/v1/parties/1')
+      .delete('/v1/parties/1')
       .end((err, res) => {
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal(200);
+        expect(res.body).to.have.property('message').eql('The party has been deleted successfully');
         done();
       });
   });

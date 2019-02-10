@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 const { ifExist, increment, partyEntityValidator } = require('./../helper/helper');
 
 const Parties = [];
@@ -42,7 +43,9 @@ const getParties = (req, res) => {
 };
 
 const getParty = (req, res) => {
-  const { id } = req.params.id;
+  const id = req.params.id;
+  console.log(id);
+
   if (Parties.length === 0) {
     res.json({
       status: 404,
@@ -78,6 +81,22 @@ const editParty = (req, res) => {
   }
 };
 
+const deleteParty = (req, res) => {
+  const id = req.params.id;
+  if (Parties[id - 1] === undefined) {
+    res.json({
+      status: 404,
+      message: 'There is no party with the specified ID',
+    });
+  } else {
+    delete Parties[id - 1];
+    res.json({
+      status: 200,
+      message: 'The party has been deleted successfully',
+    });
+  }
+};
+
 module.exports = {
   defaultRoute,
   postParty,
@@ -85,4 +104,5 @@ module.exports = {
   Parties,
   getParty,
   editParty,
+  deleteParty,
 };
