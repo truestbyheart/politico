@@ -4,7 +4,7 @@ const {
 } = require('./../helper/helper');
 
 const Parties = [];
-const Offices = [];
+let Offices = [];
 
 
 const defaultRoute = (req, res) => {
@@ -149,6 +149,29 @@ const getOffice = (req, res) => {
   }
 };
 
+const editOffice = (req, res) => {
+  const id = req.params.id;
+  const oldData = Offices;
+  const newData = [];
+  const office = req.body;
+  office.id = Number(id);
+  newData.push(office);
+  const editedOffice = oldData.map(obj => newData.find(o => o.id === obj.id));
+  if (editedOffice.length === 0) {
+    res.json({
+      status: 404,
+      message: 'There is no office with the specified ID',
+    });
+  } else {
+    Offices = editedOffice;
+    res.json({
+      status: 200,
+      message: 'The data has been succefully edited',
+      Data: editedOffice,
+    });
+  }
+};
+
 module.exports = {
   defaultRoute,
   postParty,
@@ -161,4 +184,5 @@ module.exports = {
   Offices,
   getOffices,
   getOffice,
+  editOffice,
 };

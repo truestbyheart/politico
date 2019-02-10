@@ -9,6 +9,7 @@ const {
   postOffice,
   getOffices,
   getOffice,
+  editOffice,
 } = require('./route/route');
 
 
@@ -33,7 +34,8 @@ app
 
 app
   .route('/v1/offices/:id')
-  .get(getOffice);
+  .get(getOffice)
+  .patch(editOffice);
 
 
 app.listen(PORT);
