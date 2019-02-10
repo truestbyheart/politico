@@ -41,9 +41,24 @@ const getParties = (req, res) => {
   }
 };
 
+const getParty = (req, res) => {
+  const { id } = req.params.id;
+  if (Parties.length === 0) {
+    res.json({
+      status: 404,
+      message: 'There is no party with the specified ID',
+    });
+  } else {
+    res.json({
+      status: 200,
+      Data: Parties[id - 1],
+    });
+  }
+};
 module.exports = {
   defaultRoute,
   postParty,
   getParties,
   Parties,
+  getParty,
 };
