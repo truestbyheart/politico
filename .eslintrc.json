@@ -19,12 +19,17 @@
                 ]
             }
         ],
-        "rules": {
-            "eslint linebreak-style": [
-                0,
-                "error",
-                "windows"
-            ]
+       "linebreak-style": [
+        "error",
+        "unix"
+    ],
+    "no-prototype-builtins": "off",
+    "consistent-return": "off",
+    "no-plusplus": [
+        "error",
+        {
+            "allowForLoopAfterthoughts": true
         }
+    ]
     }
 }
