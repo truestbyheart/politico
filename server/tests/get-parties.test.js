@@ -43,7 +43,7 @@ describe('GET /parties', () => {
       .end((err, res) => {
         expect(res.status).to.equal(200);
         expect(res.body.Data).to.have.lengthOf(2);
-        done();
+        done();  
       });
   });
   it('should GET a message if empty', (done) => {

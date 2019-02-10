@@ -1,7 +1,7 @@
 const ifExist = (body, array) => {
   if (array.length >= 0) {
     for (let i = 0; i < array.length; i++) {
-      if (body.name === array[i].name || body.logoUrl === array[i].logoUrl) {
+      if (body.name === array[i].name) {
         return true;
       }
     }
@@ -30,4 +30,16 @@ const partyEntityValidator = (body) => {
   }
 };
 
-module.exports = { ifExist, increment, partyEntityValidator };
+const officeEntityValidator = (body) => {
+  if (
+    body.hasOwnProperty('name')
+    && body.hasOwnProperty('type')
+  ) {
+    return true;
+  }
+};
+
+
+module.exports = {
+  ifExist, increment, partyEntityValidator, officeEntityValidator,
+};

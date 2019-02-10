@@ -1,7 +1,10 @@
 /* eslint-disable prefer-destructuring */
-const { ifExist, increment, partyEntityValidator } = require('./../helper/helper');
+const {
+  ifExist, increment, partyEntityValidator, officeEntityValidator,
+} = require('./../helper/helper');
 
 const Parties = [];
+const Offices = [];
 
 
 const defaultRoute = (req, res) => {
@@ -14,7 +17,7 @@ const defaultRoute = (req, res) => {
 const postParty = (req, res) => {
   if (partyEntityValidator(req.body)) {
     if (ifExist(req.body, Parties)) {
-      res.status(200).json({ status: 200, message: 'The party already exists or your logo Url exists :-)' });
+      res.status(200).json({ status: 200, message: 'The party already exists' });
     } else {
       increment(req.body, Parties);
       res.status(201).json({ status: 201, Data: Parties });
@@ -44,7 +47,6 @@ const getParties = (req, res) => {
 
 const getParty = (req, res) => {
   const id = req.params.id;
-  console.log(id);
 
   if (Parties.length === 0) {
     res.json({
@@ -96,6 +98,27 @@ const deleteParty = (req, res) => {
     });
   }
 };
+const postOffice = (req, res) => {
+  if (officeEntityValidator(req.body)) {
+    if (ifExist(req.body, Offices)) {
+      res
+        .status(200)
+        .json({
+          status: 200,
+          message: 'The office already exists',
+        });
+    } else {
+      increment(req.body, Offices);
+      res.status(201).json({ status: 201, Data: Offices });
+    }
+  } else {
+    res.json({
+      status: 200,
+      message: 'Please make sure all properties are filled',
+      note: 'The data should be case sensitive to the entity specs',
+    });
+  }
+};
 
 module.exports = {
   defaultRoute,
@@ -105,4 +128,6 @@ module.exports = {
   getParty,
   editParty,
   deleteParty,
+  postOffice,
+  Offices,
 };
