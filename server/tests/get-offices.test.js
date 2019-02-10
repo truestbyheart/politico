@@ -9,37 +9,34 @@ chai.use(require('chai-things'));
 // eslint-disable-next-line no-unused-vars
 const expect = chai.expect;
 const { app } = require('../server');
-const { Parties } = require('../route/route');
+const { Offices } = require('./../route/route');
 
 chai.use(chaiHttp);
 
-describe('GET /parties', () => {
-  it('should GET all the parties', (done) => {
-    Parties.length = 0;
-
-    const party = {
-      name: 'civic union front',
-      hqAddress: 'p.o bo 1234, dar-es-salaam',
-      logoUrl: '/img/cuf.png',
+describe('GET /offices', () => {
+  it('should GET all the offices', (done) => {
+    const office = {
+      name: 'Deputy Speaker',
+      type: 'legislature',
     };
-    const party2 = {
-      name: 'chama cha maendeleo na demokrasia',
-      hqAddress: 'p.o bo 1234, dar-es-salaam',
-      logoUrl: '/img/chadema.png',
+    const office2 = {
+      name: 'Speaker',
+      type: 'legislature',
     };
 
     chai
       .request(app)
-      .post('/v1/parties')
-      .send(party)
+      .post('/v1/offices')
+      .send(office)
       .end();
     chai
       .request(app)
-      .post('/v1/parties')
-      .send(party2)
+      .post('/v1/offices')
+      .send(office2)
       .end();
-    chai.request(app)
-      .get('/v1/parties')
+    chai
+      .request(app)
+      .get('/v1/offices')
       .end((err, res) => {
         expect(res.status).to.equal(200);
         expect(res.body.Data).to.have.lengthOf(2);
@@ -47,10 +44,10 @@ describe('GET /parties', () => {
       });
   });
   it('should GET a message if empty', (done) => {
-    Parties.length = 0;
+    Offices.length = 0;
     chai
       .request(app)
-      .get('/v1/parties')
+      .get('/v1/offices')
       .end((err, res) => {
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal(404);
