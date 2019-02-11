@@ -11,14 +11,19 @@ for running the API offline your required to clone it to your machine and make s
 
 1. Make sure you have installed node
 2. Install the packages using npm `node package manager` using the following command.
+
        `npm install`
+       
 3. When the process completes you can launch your terminal and find the folder you cloned the project too and run
+
     `npm run start`
+    
 
 ## API endpoints
 > NB: make post request to store data then  you can continue to use other routes
 
 1. POST `/v1/parties`
+
 sample response
 
         `{
@@ -34,6 +39,7 @@ sample response
         }`
 
 2. GET `/v1/parties` 
+
 sample response
 
         `{
@@ -55,6 +61,7 @@ sample response
         }`
 
 3. GET `/v1/parties/:id`
+
  sample url (https://politicoapiv1.herokuapp.com/v1/parties/1)
 
         `{
@@ -68,6 +75,7 @@ sample response
         }`
 
 3. PATCH  `/v1/parties/:id`
+
 sample url (https://politicoapiv1.herokuapp.com/v1/parties/1)
 
         `{
@@ -84,6 +92,7 @@ sample url (https://politicoapiv1.herokuapp.com/v1/parties/1)
             ]
         }`
 4. DELETE `/v1/parties/:id`
+
 sample url (https://politicoapiv1.herokuapp.com/v1/parties/1)
 
         `
@@ -93,6 +102,7 @@ sample url (https://politicoapiv1.herokuapp.com/v1/parties/1)
         }`
 
 5. all error may look like
+
 
         `
         {
