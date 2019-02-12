@@ -110,11 +110,40 @@ PROFILEAREA
 SIDEBAR AREA
 */
 .sidebar {
-  height: 90vh;
-  width: 8em;
+  margin-top: -4%;
+  height: 100vh;
+  width: 10em;
+  z-index: 200;
   background-color: var(--admin-color, #2c3e50);
-  position: absolute;
+  position: fixed;
   text-align: center;
+}
+
+.close-sidebar{
+  margin-left: 7em;
+}
+
+.lower-tabular{
+  margin-top: 100%;
+}
+
+.sidebar-logo a:link,
+.sidebar-logo a:visited,
+.sidebar-logo a:active {
+  float: left;
+ margin: 0.5em 0 0 0.6em;
+  color: var(--default-white, #fff);
+  background-color: rgba(255, 255, 255, 0.4);
+  border-bottom: 3px solid var(--default-white, #fff);
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 1.4em;
+}
+
+.sidebar-logo span {
+  font-size: 2em;
+  background-color: white;
+  color: var(--default-black, #000);
 }
 
 .politician-page .sidebar {
@@ -129,7 +158,9 @@ SIDEBAR AREA
   padding: 0.4em 1.2em;
   text-transform: capitalize;
 }
-
+.tabular-menu{
+  margin-top: 60%;
+}
 .sidebar-list__item:hover {
   background-color: rgba(255, 255, 255, 0.4);
 }
@@ -459,7 +490,7 @@ BTN AREA
   border: none;
   color: var(--default-black, #000);
   background-color: var(--default-white, #fff);
-  margin: 1% 0 0 90%;
+  margin: 1% 0 0 74%;
 }
 
 .btn-admin-new img {
@@ -487,6 +518,7 @@ BTN AREA
 .btn-pop {
   background-color: var(--admin-color, #2c3e50);
   width: 12em !important;
+  margin-left: 2.4em;
 }
 
 .btn-agree:link,
@@ -604,4 +636,25 @@ POPUP AREA
   height: 3em;
   width: 84%;
   margin-bottom: 2%;
+}
+/* TAB MENU  */
+
+.tab-menu{
+  position: absolute;
+  left: 6em;
+}
+
+.party-section,.office-section {
+    top: 50%;
+    left: 50%;
+    transform: translate(29%,21%);
+}
+
+.edit-modal{
+ margin-top: 4%;
+  transform: translate(29%,21%); 
+}
+.delete-modal {
+  margin-top: 4%;
+  transform: translate(0%,21%);
 }
