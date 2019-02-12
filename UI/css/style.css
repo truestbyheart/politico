@@ -85,19 +85,19 @@ UTILITY CLASSES
 .show {
   display: block;
 }
-<<<<<<< HEAD
+
 .stat-num {
   position: absolute;
   font-size: 1.8em;
   margin-left: 0.3em;
 }
 
-=======
+
 .center-content{
   max-width: 52.25em;
   margin: auto;
 }
->>>>>>> d4fb9552f47327fc6d41e22c17cccc31815745a4
+
 /*
 PROFILEAREA
 */
