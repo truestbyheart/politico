@@ -89,7 +89,11 @@ const formValidator = () => {
             data['email'] = email.value;
         }
     } else {
-        notify.innerHTML = `<span>please before you continue agree to our terms and service</span>`
+        notify.innerHTML = ` <div class="term-unchecked">
+        <p>please before you continue agree to our terms and service</p>
+        </div>
+        
+        `
     }
 
 }
@@ -134,10 +138,63 @@ const exit = () => {
     pop.classList.add('hidden');
     pop.classList.remove('show');
 }
-
+let show =true;
 const yesClick = (btn) => {
-   // let btn = document.getElementById('btn');
-    btn.classList.toggle('btn-agree');
-    btn.classList.toggle('btn-yes');
+
+        btn.classList.remove('btn-agree');
+        btn.classList.add('btn-yes');
+    let unwanted = document.getElementsByClassName('btn-agree');
+    for (let i =0; i < unwanted.length; i++) {     
+        unwanted[i].classList.add('hidden');
+        unwanted[i].classList.remove('show');
+    }
+   
+}
+
+
+const sidebar = () => {
+    bar = document.getElementById('sidebar');
+    bar.classList.add('slide');
+    bar.classList.remove('slim');
+}
+
+const close_sidebar = () => {
+    bar = document.getElementById('sidebar');
+    bar.classList.add('slim');
+    bar.classList.remove('slide');
 }
  
+const edit_party = () => {
+    let pop = document.getElementById('pop');
+    let poptab = document.getElementById('pop-tab'); 
+    let popparty = document.getElementById('pop-party');
+    let popoffice = document.getElementById('pop-office');
+    let editmodal = document.getElementById('edit-modal');
+    let deletemodal = document.getElementById('delete-modal');
+    editmodal.classList.remove('hidden');
+    pop.classList.remove('hidden');
+    pop.classList.add('show');
+    poptab.classList.add('hidden');
+    popparty.classList.add('hidden');
+    popoffice.classList.add('hidden');
+    deletemodal.classList.add('hidden');
+
+
+}
+
+const delete_data = () => {
+    let pop = document.getElementById('pop');
+    let poptab = document.getElementById('pop-tab');
+    let popparty = document.getElementById('pop-party');
+    let popoffice = document.getElementById('pop-office');
+    let deletemodal = document.getElementById('delete-modal');
+    let editmodal = document.getElementById('edit-modal');
+    deletemodal.classList.remove('hidden');
+    editmodal.classList.add('hidden');
+    pop.classList.remove('hidden');
+    pop.classList.add('show');
+    poptab.classList.add('hidden');
+    popparty.classList.add('hidden');
+    popoffice.classList.add('hidden');
+
+}
