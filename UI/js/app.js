@@ -89,7 +89,11 @@ const formValidator = () => {
             data['email'] = email.value;
         }
     } else {
-        notify.innerHTML = `<span>please before you continue agree to our terms and service</span>`
+        notify.innerHTML = ` <div class="term-unchecked">
+        <p>please before you continue agree to our terms and service</p>
+        </div>
+        
+        `
     }
 
 }
