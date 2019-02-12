@@ -34,39 +34,23 @@
         </nav>
       </div>
     </header>
- 
+  <div class="sidebar slim" id="sidebar">
+    <a href="javascript:void(0)" class="close-sidebar" onclick="close_sidebar()">
+      <img src="./../img/icons/close-flat.svg" class="icon" alt="close" />
+    </a>
+    <div class="sidebar-logo">
+      <a href="./../index.html"> <span>P</span>olitico </a>
+    </div>
+    <div class="tabular-menu">
+      <a href="#party" class="sidebar-list__item" onclick="admintab('party')">party</a>
+      <a href="#office" class="sidebar-list__item" onclick="admintab('office')">office</a>
+    </div>
+    <div class="lower-tabular">
+      <a href="./user-home.html" class="sidebar-list__item">user</a>
+      <a href="./politician.html" class="sidebar-list__item">politician</a>
+    </div>
+  </div>
     <main class="admin-page">
-   
-      <div class="sidebar hidden" id="sidebar">
-        <a
-          href="javascript:void(0)"
-          class="close-sidebar"
-          onclick="close_sidebar()"
-        >
-          <img src="./../img/icons/close-flat.svg" class="icon" alt="close" />
-        </a>
-        <div class="sidebar-logo">
-          <a href="./../index.html"> <span>P</span>olitico </a>
-        </div>
-        <div class="tabular-menu">
-          <a
-            href="#party"
-            class="sidebar-list__item"
-            onclick="admintab('party')"
-            >party</a
-          >
-          <a
-            href="#office"
-            class="sidebar-list__item"
-            onclick="admintab('office')"
-            >office</a
-          >
-        </div>
-        <div class="lower-tabular">
-          <a href="./user-home.html" class="sidebar-list__item">user</a>
-          <a href="./politician.html" class="sidebar-list__item">politician</a>
-        </div>
-      </div>
       <div class="admin-content center-content">
         <section class="pop-up hidden" id="pop">
           <a href="#" onclick="exit()"
@@ -165,13 +149,13 @@
             </div>
           </div>
         </section>
+<div class="center-conte">
+<a href="#" class="btn-admin-new" onclick="pop()"><img src="./../img/icons/add.svg" alt="add new" />
+  <span>New</span></a>
 
-        <a href="#" class="btn-admin-new" onclick="pop()"
-          ><img src="./../img/icons/add.svg" alt="add new" />
-          <span>New</span></a
-        >
-
-        <hr />
+<hr />
+</div>
+       
         <section class="party show" id="sect-1">
           <div class="center-content">
             <table class="tabled-data">
