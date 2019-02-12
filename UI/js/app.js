@@ -138,7 +138,6 @@ const exit = () => {
     pop.classList.add('hidden');
     pop.classList.remove('show');
 }
-let show =true;
 const yesClick = (btn) => {
 
         btn.classList.remove('btn-agree');
@@ -196,5 +195,19 @@ const delete_data = () => {
     poptab.classList.add('hidden');
     popparty.classList.add('hidden');
     popoffice.classList.add('hidden');
+
+}
+
+const voteClick = (btn) =>{
+const cat = btn.classList[2]
+   btn.classList.remove('btn-agree');
+   btn.classList.remove('cat-' + cat[4]);
+   btn.classList.add('btn-yes');
+
+    let unwanted = document.getElementsByClassName('cat-' + cat[4]);
+    for (let i = 0; i < unwanted.length; i++) {
+        unwanted[i].classList.add('hidden');
+        unwanted[i].classList.remove('show');
+    }
 
 }

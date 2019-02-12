@@ -133,6 +133,18 @@ PROFILEAREA
   text-transform: capitalize;
 }
 
+.pro-link:link,
+.pro-link:visited{
+  margin: 0 !important;
+  padding: 0 !important;
+
+}
+.pro-link:hover{
+  color: RGBA(255, 255, 255, 0.5);
+  border-bottom: none;
+
+}
+
 /*
 SIDEBAR AREA
 */
