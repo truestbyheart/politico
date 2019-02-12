@@ -44,7 +44,7 @@ PAGES STYLE
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(img/voters-large.jpg);
   background-size: cover;
-  height: 90vh;
+  height: 122vh;
 }
 
 .admin-page {
@@ -246,7 +246,12 @@ FORM AREA
 p.login {
   width: 40%;
   display: inline-block;
-  margin-left: 0;
+  
+}
+
+.btn-signup{
+  text-align: center;
+
 }
 
 
@@ -262,8 +267,8 @@ p.login {
 }
 
 .form-align .form-element input {
-  display: inline-block;
-  width: 40%;
+    display: inline-block;
+    width: 80%;
 }
 
 .form__input {
@@ -328,8 +333,7 @@ p.login {
 }
 
 .form_label {
-  display: inline;
-  margin: 12px 0 12px 0;
+  display: inline-block;
   text-align: left;
   text-transform: capitalize; 
 }
@@ -369,7 +373,7 @@ form style only for signup
 */
 .form-signup {
   position: absolute;
-  top: 50%;
+  top: 66%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -506,7 +510,8 @@ BTN AREA
 /*
 FOOTER AREA
 */
-.front-footer{
+.front-footer,
+.signup-footer{
   position: absolute;
   background-color: var(--primary-theme-color,#24292e);
   width: 100%;
@@ -588,4 +593,15 @@ POPUP AREA
 
 .pop-up__tab a:active {
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+.term-unchecked{
+  border: 2px solid red;
+  background-color: rgba(255,0,0,.6);
+  border-radius: 4px;
+  text-align: center;
+  text-transform: capitalize;
+  height: 3em;
+  width: 84%;
+  margin-bottom: 2%;
 }
