@@ -1,4 +1,9 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable linebreak-style */
+/* eslint-disable camelcase */
+// eslint-disable-next-line no-unused-vars
 const formValidator = () => {
+
   let fname = document.getElementById("fname");
   let lname = document.getElementById("lname");
   let votersid = document.getElementById("voters-id");
@@ -109,11 +114,13 @@ const admintab = value => {
     party.classList.remove("show");
     party.classList.add("hidden");
   }
+
 };
 
 const popUpTab = value => {
   let party = document.getElementById("pop-party");
   let office = document.getElementById("pop-office");
+
 
   if (value === "party") {
     office.classList.add("hidden");
@@ -125,6 +132,7 @@ const popUpTab = value => {
     party.classList.add("hidden");
   }
 };
+
 
 // const pop = popreq => {
 
@@ -263,6 +271,7 @@ const sendResetLink = () => {
   let notify = document.getElementById('notify');
   let email = document.getElementById('email');
 
+
   if (validateEmail(email.value)) {
     notify.innerHTML = `
      <div class = "success">
@@ -281,3 +290,4 @@ const sendResetLink = () => {
         `
   }
 }
+
