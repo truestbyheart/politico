@@ -71,9 +71,13 @@ const formValidator = () => {
       address.classList.add('form-error');
       address.classList.remove('form-success');
     } else {
-      address.classList.add('form-success');
-      address.classList.remove('form-error');
-      data.address = address.value;
+
+        notify.innerHTML = ` <div class="term-unchecked">
+        <p>please before you continue agree to our terms and service</p>
+        </div>
+        
+        `
+
     }
 
     if (zip_code.value === '') {
