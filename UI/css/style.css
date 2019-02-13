@@ -27,8 +27,6 @@ body {
   color: var(--default-white, #fff);
 }
 
-
-
 /*
 PAGES STYLE
 */
@@ -44,7 +42,7 @@ PAGES STYLE
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(img/voters-large.jpg);
   background-size: cover;
-  height: 122vh;
+  height: 110vh;
 }
 
 .admin-page {
@@ -77,39 +75,38 @@ UTILITY CLASSES
 */
 .hidden {
   display: none;
-  opacity: 0
+  opacity: 0;
 }
 
 .show {
   display: block;
 }
-.center-content{
+.center-content {
   max-width: 52.25em;
   margin: auto;
 }
 
-.slim{
+.slim {
   transform: translateX(-20em);
   opacity: 0;
-  transition: all .6s;
+  transition: all 0.6s;
 }
 
-.slide{
+.slide {
   opacity: 1;
   transform: translateX(0em);
-  transition: all .6s;
+  transition: all 0.6s;
 }
 
-.top-up{
+.top-up {
   transform: translateY(-200em);
   opacity: 0;
-  transition: all .6s;
-
+  transition: all 0.6s;
 }
-.top-down{
+.top-down {
   transform: translateY(0em);
   opacity: 1;
-  transition: all .6s;
+  transition: all 0.6s;
 }
 /*
 PROFILEAREA
@@ -117,6 +114,7 @@ PROFILEAREA
 .profile {
   display: inline-block;
   position: relative;
+  margin-left: 80%;
 }
 
 .profile__pic {
@@ -134,15 +132,13 @@ PROFILEAREA
 }
 
 .pro-link:link,
-.pro-link:visited{
+.pro-link:visited {
   margin: 0 !important;
   padding: 0 !important;
-
 }
-.pro-link:hover{
+.pro-link:hover {
   color: RGBA(255, 255, 255, 0.5);
   border-bottom: none;
-
 }
 
 /*
@@ -156,14 +152,13 @@ SIDEBAR AREA
   background-color: var(--admin-color, #2c3e50);
   position: absolute;
   text-align: center;
- 
 }
 
-.close-sidebar{
+.close-sidebar {
   margin-left: 7em;
 }
 
-.lower-tabular{
+.lower-tabular {
   margin-top: 100%;
 }
 
@@ -171,7 +166,7 @@ SIDEBAR AREA
 .sidebar-logo a:visited,
 .sidebar-logo a:active {
   float: left;
- margin: 0.5em 0 0 0.6em;
+  margin: 0.5em 0 0 0.6em;
   color: var(--default-white, #fff);
   background-color: rgba(255, 255, 255, 0.4);
   border-bottom: 3px solid var(--default-white, #fff);
@@ -198,7 +193,7 @@ SIDEBAR AREA
   padding: 0.4em 1.2em;
   text-transform: capitalize;
 }
-.tabular-menu{
+.tabular-menu {
   margin-top: 60%;
 }
 .sidebar-list__item:hover {
@@ -315,14 +310,11 @@ FORM AREA
 p.login {
   width: 40%;
   display: inline-block;
-  
 }
 
-.btn-signup{
+.btn-signup {
   text-align: center;
-
 }
-
 
 .form-element p.forgot a:link,
 .form-element p.forgot a:visited {
@@ -336,8 +328,8 @@ p.login {
 }
 
 .form-align .form-element input {
-    display: inline-block;
-    width: 80%;
+  display: inline-block;
+  width: 80%;
 }
 
 .form__input {
@@ -373,14 +365,14 @@ p.login {
 .form-error {
   border: 2px solid #ff0000;
 
-  background-image: url(icons/error-z.png) !important;
+  background-image: url(icons/no.svg) !important;
   background-repeat: no-repeat;
-  background-position: 99% 5px;
+  background-position: 99% 0px;
 }
 
 .form-success {
   border: 2px solid #55c57a;
-  background-image: url(icons/tick.png) !important;
+  background-image: url(icons/yes.svg) !important;
   background-repeat: no-repeat;
   background-position: 100% 0px;
 }
@@ -404,7 +396,7 @@ p.login {
 .form_label {
   display: inline-block;
   text-align: left;
-  text-transform: capitalize; 
+  text-transform: capitalize;
 }
 
 #info {
@@ -431,10 +423,10 @@ form style only for sigin
 */
 
 .form-login {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
 }
 
 /*
@@ -442,9 +434,8 @@ form style only for signup
 */
 .form-signup {
   position: absolute;
-  top: 66%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 35%;
+  top: 12%;
 }
 
 .form-signup .form__input {
@@ -555,8 +546,9 @@ BTN AREA
 
 .btn-pop {
   background-color: var(--admin-color, #2c3e50);
-  width: 12em !important;
+  width: 35% !important;
   margin-left: 2.4em;
+  color: inherit;
 }
 
 .btn-agree:link,
@@ -581,9 +573,9 @@ BTN AREA
 FOOTER AREA
 */
 .front-footer,
-.signup-footer{
+.signup-footer {
   position: absolute;
-  background-color: var(--primary-theme-color,#24292e);
+  background-color: var(--primary-theme-color, #24292e);
   width: 100%;
   height: 8vh;
   text-align: center;
@@ -646,30 +638,36 @@ POPUP AREA
   margin: -4em 0 0 -18em;
   text-align: center;
   opacity: 1;
-  transition: all .3s;
+  transition: all 0.3s;
+}
+
+.pop-up__tab{
+  text-align: center;
 }
 
 .pop-up__tab a:link,
 .pop-up__tab a:visited {
   display: inline-block;
   text-decoration: none;
-  color: inherit;
+  color:var(--default-white, #fff) ;
   padding: 0.4em 1.2em;
   border: 1px solid var(--default-white, #fff);
   margin: 0.4em 0 0 -0.4em;
+  background-color: var(--admin-color,#2c3e50);
+
 }
 
 .pop-up__tab a:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+ background-color: rgba(0, 0, 0, 0.493);
 }
 
 .pop-up__tab a:active {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.term-unchecked{
+.term-unchecked {
   border: 2px solid red;
-  background-color: rgba(255,0,0,.6);
+  background-color: rgba(255, 0, 0, 0.6);
   border-radius: 4px;
   text-align: center;
   text-transform: capitalize;
@@ -679,24 +677,77 @@ POPUP AREA
 }
 /* TAB MENU  */
 
-.tab-menu{
+.tab-menu {
   position: absolute;
   left: 6em;
 }
 
-.party-section,.office-section {
-    top: 50%;
-    left: 50%;
-    transform: translate(29%,21%);
+.party-section,
+.office-section {
+  top: 50%;
+  left: 50%;
+  transform: translate(29%, 21%);
+}
+
+
+
+hr {
+  width: 85%;
+  margin-left: 1%;
+}
+/*
+POPUP modal AREA
+*/
+
+.pop-modal {
+  position: absolute;
+  z-index: 200;
+  background-color: rgba(0, 0, 0, 0.692);
+  width: 100%;
+  height: 100vh;
+}
+
+.pop-messages {
+  position: absolute;
+  width: 72%;
+  height: 45vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #eee;
+  border-radius: 4px;
+  color: var(--default-black,#000);
+
+}
+.pop_input{
+  width: 65%;
+}
+.party-section,
+.edit-modal, 
+.delete-modal,
+.office-section{
+  width: 100%;
+  text-align: center;
 }
 
 .edit-modal{
- margin-top: 4%;
-  transform: translate(29%,21%); 
+  transform: translate(30%,61%);
 }
-.delete-modal {
-  margin-top: 4%;
-  transform: translate(0%,21%);
+.pop-exit {
+  position: absolute;
+  margin-left: 74%;
+  margin-top: 1%;
 }
 
+.top-up{
+  transform: translateY(-200em);
+  opacity: 0;
+  transition: all .5s;
+}
+
+.top-down {
+  transform: translateY(0em);
+  opacity: 1;
+  transition: all .5s;
+}
 

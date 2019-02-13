@@ -9,6 +9,82 @@
   </head>
 
   <body>
+    <div class="pop-modal top-up" id="pop">
+      <div class="pop-messages " id="pop-msg">
+        <div class="pop-exit"><a href="javascript:void(0)" class="close-sidebar" onclick="exit()">
+          <img src="./../img/icons/cancel.svg" class="icon" alt="close" />
+        </a></div>
+        <div class="new-data show" id="new-data">
+          <div class="pop-up__tab" id="pop-tab">
+            <a href="#" onclick="popUpTab('party')">PARTY</a>
+            <a href="#" onclick="popUpTab('office')">OFFICE</a>
+          </div>
+            <div class="party-section" id="pop-party">
+              <div class="form">
+                <div id="notify"></div>
+        
+                <div class="form-element">
+                  <label for="name" class="form_label">name:</label>
+                  <input type="text" class="form__input pop_input" name="name" placeholder="name" minlength="2" id="name"
+                    required />
+                </div>
+        
+                <div class="form-element">
+                  <label for="abbreviation" class="form_label">Abbre:</label>
+                  <input type="text" class="form__input pop_input" name="abbreviation" placeholder="abbreviation" minlength="2"
+                    id="abbrev" required />
+                </div>
+                <div class="form-element">
+                  <a href="#" class="btn btn-pop">Add</a>
+                </div>
+              </div>
+            </div>
+       
+        
+          <div class="office-section hidden" id="pop-office">
+            <div class="form">
+              <div id="notify"></div>
+              <div class="form-element">
+                <label for="office" class="form_label">office:</label>
+                <input type="text" class="form__input pop_input" name="office" placeholder="office" minlength="2" id="name"
+                  required />
+              </div>
+              <div class="form-element">
+                <a href="#" class="btn btn-pop">add</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <section class="edit-modal hidden" id="edit-modal">
+          <div class="form">
+            <div id="notify"></div>
+            <div class="form-element">
+              <label for="name" class="form_label">name:</label>
+              <input type="text" class="form__input pop_input" name="name" placeholder="name" minlength="2" id="name"
+                required />
+            </div>
+        
+            <div class="form-element">
+              <label for="abbreviation" class="form_label">Abbre:</label>
+              <input type="text" class="form__input pop_input" name="abbreviation" placeholder="abbreviation" minlength="2"
+                id="abbrev" required />
+            </div>
+            <div class="form-element">
+              <a href="#" class="btn btn-pop">Add</a>
+            </div>
+          </div>
+        </section>
+        <section class="delete-modal center-content hidden" id="delete-modal">
+          <p>Are you sure?</p>
+          <div class="form-element">
+            <a href="#" class="btn btn-pop">yes</a>
+          </div>
+          <div class="form-element">
+            <a href="#" class="btn btn-pop">no</a>
+          </div>
+        </section>
+      </div>
+    </div>
     <header class="admin-header">
       <div class="center-content">
         <a href="javascript:void(0)" class="tab-menu" onclick="sidebar()">
@@ -34,128 +110,43 @@
         </nav>
       </div>
     </header>
-  <div class="sidebar slim" id="sidebar">
-    <a href="javascript:void(0)" class="close-sidebar" onclick="close_sidebar()">
-      <img src="./../img/icons/close-flat.svg" class="icon" alt="close" />
-    </a>
-    <div class="sidebar-logo">
-      <a href="./../index.html"> <span>P</span>olitico </a>
+    <div class="sidebar slim" id="sidebar">
+      <a
+        href="javascript:void(0)"
+        class="close-sidebar"
+        onclick="close_sidebar()"
+      >
+        <img src="./../img/icons/close-flat.svg" class="icon" alt="close" />
+      </a>
+      <div class="sidebar-logo">
+        <a href="./../index.html"> <span>P</span>olitico </a>
+      </div>
+      <div class="tabular-menu">
+        <a href="#party" class="sidebar-list__item" onclick="admintab('party')"
+          >party</a
+        >
+        <a
+          href="#office"
+          class="sidebar-list__item"
+          onclick="admintab('office')"
+          >office</a
+        >
+
+        <a href="./user-home.html" class="sidebar-list__item">user</a>
+        <a href="./politician.html" class="sidebar-list__item">politician</a>
+      </div>
     </div>
-    <div class="tabular-menu">
-      <a href="#party" class="sidebar-list__item" onclick="admintab('party')">party</a>
-      <a href="#office" class="sidebar-list__item" onclick="admintab('office')">office</a>
-    </div>
-    <div class="lower-tabular">
-      <a href="./user-home.html" class="sidebar-list__item">user</a>
-      <a href="./politician.html" class="sidebar-list__item">politician</a>
-    </div>
-  </div>
     <main class="admin-page">
       <div class="admin-content center-content">
-        <section class="pop-up hidden" id="pop">
-          <a href="#" onclick="exit()"
-            ><img
-              src="./../img/icons/close.svg"
-              alt="close"
-              class="icon pop-close"
-          /></a>
-        <section class="edit-modal center-content hidden" id="edit-modal">
-            <div class="form">
-                <div id="notify"></div>
-                <div class="form-element">
-                    <label for="name" class="form_label">name:</label>
-                    <input type="text" class="form__input pop_input" name="name" placeholder="name" minlength="2" id="name"
-                        required />
-                </div>
-        
-                <div class="form-element">
-                    <label for="abbreviation" class="form_label">Abbre:</label>
-                    <input type="text" class="form__input pop_input" name="abbreviation" placeholder="abbreviation"
-                        minlength="2" id="abbrev" required />
-                </div>
-                <div class="form-element">
-                    <a href="#" class="btn btn-pop">Add</a>
-                </div>
-            </div>
-        </section>
-        <section class="delete-modal center-content hidden" id="delete-modal">
-          <p>Are you sure?</p>
-        <div class="form-element">
-            <a href="#" class="btn btn-pop">yes</a>
+        <div class="center-content">
+          <a href="#" class="btn-admin-new" onclick="pop('new')"
+            ><img src="./../img/icons/add.svg" alt="add new" />
+            <span>New</span></a
+          >
+
+          <hr />
         </div>
-        <div class="form-element">
-            <a href="#" class="btn btn-pop">no</a>
-        </div>
-        </section>
-          <div class="pop-up__tab" id="pop-tab">
-            <a href="#" onclick="popUpTab('party')">PARTY</a>
-            <a href="#" onclick="popUpTab('office')">OFFICE</a>
-          </div>
-          <div class="center-content">
-            <div class="party-section" id="pop-party">
-              <div class="form">
-                <div id="notify"></div>
 
-                <div class="form-element">
-                  <label for="name" class="form_label">name:</label>
-                  <input
-                    type="text"
-                    class="form__input pop_input"
-                    name="name"
-                    placeholder="name"
-                    minlength="2"
-                    id="name"
-                    required
-                  />
-                </div>
-
-                <div class="form-element">
-                  <label for="abbreviation" class="form_label">Abbre:</label>
-                  <input
-                    type="text"
-                    class="form__input pop_input"
-                    name="abbreviation"
-                    placeholder="abbreviation"
-                    minlength="2"
-                    id="abbrev"
-                    required
-                  />
-                </div>
-                <div class="form-element">
-                  <a href="#" class="btn btn-pop">Add</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="office-section hidden" id="pop-office">
-            <div class="form">
-              <div id="notify"></div>
-              <div class="form-element">
-                <label for="office" class="form_label">office:</label>
-                <input
-                  type="text"
-                  class="form__input pop_input"
-                  name="office"
-                  placeholder="office"
-                  minlength="2"
-                  id="name"
-                  required
-                />
-              </div>
-              <div class="form-element">
-                <a href="#" class="btn btn-pop">add</a>
-              </div>
-            </div>
-          </div>
-        </section>
-<div class="center-conte">
-<a href="#" class="btn-admin-new" onclick="pop()"><img src="./../img/icons/add.svg" alt="add new" />
-  <span>New</span></a>
-
-<hr />
-</div>
-       
         <section class="party show" id="sect-1">
           <div class="center-content">
             <table class="tabled-data">
@@ -170,13 +161,13 @@
                 <td>Chama cha mapinduzi</td>
                 <td>CCM</td>
                 <td>
-                  <a href="#"
-                    onclick="edit_party()"><img src="./../img/icons/edit.svg" class="icon" alt="edit"
+                  <a href="#" onclick="pop('edit')"
+                    ><img src="./../img/icons/edit.svg" class="icon" alt="edit"
                   /></a>
                 </td>
                 <td>
-                  <a href="#"
-                    onclick="delete_data()"><img
+                  <a href="#" onclick="pop('delete')"
+                    ><img
                       src="./../img/icons/trash.svg"
                       class="icon"
                       alt="delete"
@@ -188,13 +179,13 @@
                 <td>Chama cha demokrasia na maendeleo</td>
                 <td>CHADEMA</td>
                 <td>
-                  <a href="#"
-                    onclick="edit_party()"><img src="./../img/icons/edit.svg" class="icon" alt="edit"
+                  <a href="#" onclick="pop('edit')"
+                    ><img src="./../img/icons/edit.svg" class="icon" alt="edit"
                   /></a>
                 </td>
                 <td>
-                  <a href="#"
-                    onclick="delete_data()"><img
+                  <a href="#" onclick="pop('delete')"
+                    ><img
                       src="./../img/icons/trash.svg"
                       class="icon"
                       alt="delete"
@@ -205,13 +196,13 @@
                 <td>Civic United Front</td>
                 <td>CUF</td>
                 <td>
-                  <a href="#"
-                    onclick="edit_party()"><img src="./../img/icons/edit.svg" class="icon" alt="edit"
+                  <a href="#" onclick="pop('edit')"
+                    ><img src="./../img/icons/edit.svg" class="icon" alt="edit"
                   /></a>
                 </td>
                 <td>
-                  <a href="#"
-                    onclick="delete_data()"><img
+                  <a href="#" onclick="pop('delete')"
+                    ><img
                       src="./../img/icons/trash.svg"
                       class="icon"
                       alt="delete"
@@ -233,13 +224,13 @@
               <tr>
                 <td>Member of parliment</td>
                 <td>
-                  <a href="#"
-                    onclick="edit_party()"><img src="./../img/icons/edit.svg" class="icon" alt="edit"
+                  <a href="#" onclick="pop('edit')"
+                    ><img src="./../img/icons/edit.svg" class="icon" alt="edit"
                   /></a>
                 </td>
                 <td>
-                  <a href="#"
-                    onclick="delete_data()"><img
+                  <a href="#" onclick="pop('delete')"
+                    ><img
                       src="./../img/icons/trash.svg"
                       class="icon"
                       alt="delete"
@@ -250,13 +241,13 @@
               <tr>
                 <td>District executive officer</td>
                 <td>
-                  <a href="#"
-                    onclick="edit_party()"><img src="./../img/icons/edit.svg" class="icon" alt="edit"
+                  <a href="#" onclick="pop('edit')"
+                    ><img src="./../img/icons/edit.svg" class="icon" alt="edit"
                   /></a>
                 </td>
                 <td>
-                  <a href="#"
-                    onclick="delete_data()"><img
+                  <a href="#" onclick="pop('delete')"
+                    ><img
                       src="./../img/icons/trash.svg"
                       class="icon"
                       alt="delete"
