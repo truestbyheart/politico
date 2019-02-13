@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Politico</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="./../css/style.css" />
+</head>
+
+<body>
+    <header class="politician-header">
+        <div class="center-content">
+        <a href="javascript:void(0)" class="tab-menu" onclick="sidebar()">
+            <img src="./../img/icons/tabmenu-icon.svg" alt="tab-image" class="tab-menu__icon" />
+        </a>
+        <nav>
+            <ul>
+                <li>
+                    <div class="profile">
+                        <img src="./../img/icons/user.svg" alt="user-profile" class="profile__pic" />
+                        <p class="profile__name">mr.politician</p>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        </div>
+
+    </header>
+<div class="sidebar slim" id="sidebar">
+    <a href="javascript:void(0)" class="close-sidebar" onclick="close_sidebar()">
+        <img src="./../img/icons/close-flat.svg" class="icon" alt="close" />
+    </a>
+    <div class="sidebar-logo">
+        <a href="./../index.html"> <span>P</span>olitico </a>
+    </div>
+    <div class="tabular-menu">
+        <a href="#party" class="sidebar-list__item">offices</a>
+        <a href="./user-home.html" class="sidebar-list__item">user</a>
+        <a href="./politician.html" class="sidebar-list__item">politician</a>
+        <a href="./admin.html" class="sidebar-list__item">admin</a>
+    </div>
+</div>
+    <main class="politician-page">
+        
+        <div class="politician-content center-content">
+            <section class="office show" id="sect-2">
+                <table class="tabled-data">
+                    <tr>
+                        <th>Office</th>
+                        <th>interest</th>
+                    </tr>
+
+                    <tr>
+                        <td>Member of parliment</td>
+                        <td>
+                            <a href="javascript:void(0)" class="btn btn-agree" onclick="yesClick(this)" >interested</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>District executive officer</td>
+                        <td>
+                            <a href="javascript:void(0)" class="btn btn-agree" onclick="yesClick(this)">interested</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>District executive officer</td>
+                        <td>
+                            <a href="javascript:void(0)" class="btn btn-agree" onclick="yesClick(this)">interested</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>District executive officer</td>
+                        <td>
+                            <a href="javascript:void(0)" class="btn btn-agree" onclick="yesClick(this)">interested</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> District executive officer</td>
+                        <td>
+                            <a href="javascript:void(0)" class="btn btn-agree" onclick="yesClick(this)">interested</a>
+                        </td>
+                    </tr>
+
+                </table>
+            </section>
+
+
+        </div>
+    </main>
+    <footer class="politician-footer">
+        &copy; Politico 2019
+    </footer>
+    <script src="./../js/app.js"></script>
+</body>
+
+</html>

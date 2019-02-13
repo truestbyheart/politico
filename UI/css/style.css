@@ -2,13 +2,13 @@
 GLOBAL VARIABLES
 */
 :root {
-  --primary-theme-color: #0000ff;
+  --primary-theme-color: #24292e;
   --default-background: #75a3a3;
   --default-black: #000;
   --default-white: #fff;
   --default-danger: #ff3333;
   --admin-color: #2c3e50;
-  --politician-page: #336e7b;
+  --politician-page: #2c3e50;
 }
 
 /*
@@ -18,13 +18,12 @@ GLOBAL CONFIGURATION
 html,
 body {
   font-family: "lato", san serif, tahoma;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 body {
   padding: 0;
-  margin: 0;
-  /* //background-color: var(--default-background,#75a3a3); */
+  margin: 0 auto;
   color: var(--default-white, #fff);
 }
 
@@ -36,7 +35,7 @@ PAGES STYLE
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(img/ballot-large.jpg);
   background-size: cover;
-  height: 90vh;
+  height: 86vh;
 }
 
 .signup-page,
@@ -44,7 +43,7 @@ PAGES STYLE
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(img/voters-large.jpg);
   background-size: cover;
-  height: 90vh;
+  height: 110vh;
 }
 
 .forgot-page {
@@ -63,6 +62,8 @@ PAGES STYLE
   background-color: var(--admin-color, #2c3e50);
   color: #fff;
   position: absolute;
+  width: 100%;
+  text-align: center;
 }
 
 .politician-page {
@@ -70,7 +71,7 @@ PAGES STYLE
   background-color: RGBA(44, 62, 80, 0.5);
 }
 .politician-footer {
-  background-color: var(--politician-page, #336e7b);
+  background-color: var(--politician-page, #2c3e50);
   margin-top: -2%;
 }
 
@@ -79,15 +80,49 @@ UTILITY CLASSES
 */
 .hidden {
   display: none;
+  opacity: 0;
 }
 
 .show {
   display: block;
 }
+
 .stat-num {
   position: absolute;
   font-size: 1.8em;
   margin-left: 0.3em;
+}
+
+.center-content {
+  max-width: 52.25em;
+  margin: auto;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.slim {
+  transform: translateX(-20em);
+  opacity: 0;
+  transition: all 0.6s;
+}
+
+.slide {
+  opacity: 1;
+  transform: translateX(0em);
+  transition: all 0.6s;
+}
+
+.top-up {
+  transform: translateY(-200em);
+  opacity: 0;
+  transition: all 0.6s;
+}
+.top-down {
+  transform: translateY(0em);
+  opacity: 1;
+  transition: all 0.6s;
 }
 
 /*
@@ -96,6 +131,7 @@ PROFILEAREA
 .profile {
   display: inline-block;
   position: relative;
+  margin-left: 80%;
 }
 
 .profile__pic {
@@ -118,19 +154,58 @@ PROFILEAREA
   margin-left: 2em;
   text-transform: capitalize;
 }
+.pro-link:link,
+.pro-link:visited {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.pro-link:hover {
+  color: RGBA(255, 255, 255, 0.5);
+  border-bottom: none;
+}
+
 /*
 SIDEBAR AREA
 */
 .sidebar {
-  height: 90vh;
-  width: 8em;
+  margin-top: -4%;
+  height: 100vh;
+  width: 10em;
+  z-index: 200;
   background-color: var(--admin-color, #2c3e50);
   position: absolute;
   text-align: center;
 }
 
+.close-sidebar {
+  margin-left: 7em;
+}
+
+.lower-tabular {
+  margin-top: 100%;
+}
+
+.sidebar-logo a:link,
+.sidebar-logo a:visited,
+.sidebar-logo a:active {
+  float: left;
+  margin: 0.5em 0 0 0.6em;
+  color: var(--default-white, #fff);
+  background-color: rgba(255, 255, 255, 0.4);
+  border-bottom: 3px solid var(--default-white, #fff);
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 1.4em;
+}
+
+.sidebar-logo span {
+  font-size: 2em;
+  background-color: white;
+  color: var(--default-black, #000);
+}
+
 .politician-page .sidebar {
-  background-color: var(--politician-page, #336e7b);
+  background-color: var(--politician-page, #2c3e50);
 }
 
 .sidebar-list__item:link,
@@ -139,9 +214,11 @@ SIDEBAR AREA
   display: block;
   text-decoration: none;
   padding: 0.4em 1.2em;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
-
+.tabular-menu {
+  margin-top: 60%;
+}
 .sidebar-list__item:hover {
   background-color: rgba(255, 255, 255, 0.4);
 }
@@ -155,7 +232,6 @@ ADMIN-CONTENT AREA
 */
 .admin-content {
   height: 90vh;
-  margin-left: 8.2em;
 }
 
 /*
@@ -163,7 +239,6 @@ POLITICIAN-CONTENT AREA
 */
 .politician-content {
   height: 90vh;
-  margin-left: 8.2em;
   margin-bottom: 1em;
 }
 
@@ -179,7 +254,7 @@ HEADER AREA
 */
 
 header {
-  background-color: var(--primary-theme-color, #0099ff);
+  background-color: var(--primary-theme-color, #24292e);
   width: 100%;
   height: 4em;
   text-align: center;
@@ -190,7 +265,7 @@ header {
   background-color: var(--admin-color, #2c3e50);
 }
 .politician-header {
-  background-color: var(--politician-page, #336e7b);
+  background-color: var(--politician-page, #2c3e50);
 }
 
 .admin-header nav,
@@ -207,7 +282,7 @@ header {
   background-color: rgba(255, 255, 255, 0.4);
   border-bottom: 3px solid var(--default-white, #fff);
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .header-logo span {
@@ -234,7 +309,7 @@ nav ul li a:active {
   transition: 0.2s ease-in;
   color: var(--default-white, #fff);
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 nav ul li a:hover {
@@ -247,8 +322,7 @@ nav ul li a:hover {
 FORM AREA
 */
 .form {
-  width: 100%;
-  text-align: center;
+  width: 40%;
 }
 
 .form-element {
@@ -259,7 +333,10 @@ FORM AREA
 p.login {
   width: 40%;
   display: inline-block;
-  margin-left: 0;
+}
+
+.btn-signup {
+  text-align: center;
 }
 
 .form-element p.forgot a:link,
@@ -275,17 +352,17 @@ p.login {
 
 .form-align .form-element input {
   display: inline-block;
-  width: 40%;
+  width: 80%;
 }
 
 .form__input {
-  width: 50%;
+  width: 72%;
   padding: 0.5rem 0.7rem;
   border-radius: 2px;
   border: none;
   font-size: 1rem;
   border-bottom: 3px solid transparent;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.98);
   transition: all 0.3s;
 }
 
@@ -311,14 +388,14 @@ p.login {
 .form-error {
   border: 2px solid #ff0000;
 
-  background-image: url(icons/error-z.png) !important;
+  background-image: url(icons/no.svg) !important;
   background-repeat: no-repeat;
-  background-position: 99% 5px;
+  background-position: 99% 0px;
 }
 
 .form-success {
   border: 2px solid #55c57a;
-  background-image: url(icons/tick.png) !important;
+  background-image: url(icons/yes.svg) !important;
   background-repeat: no-repeat;
   background-position: 100% 0px;
 }
@@ -330,12 +407,18 @@ p.login {
 
 .form-heading h3 {
   font-size: 2em;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin-bottom: 0.2em;
 }
 
 .form-heading p {
   font-size: 1em;
+  text-transform: capitalize;
+}
+
+.form_label {
+  display: inline-block;
+  text-align: left;
   text-transform: capitalize;
 }
 
@@ -361,10 +444,11 @@ p.login {
 /*
 form style only for sigin
 */
+
 .form-login {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 55%;
   transform: translate(-50%, -50%);
 }
 
@@ -373,9 +457,8 @@ form style only for signup
 */
 .form-signup {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 35%;
+  top: 12%;
 }
 
 .form-signup .form__input,
@@ -384,17 +467,13 @@ form style only for signup
 }
 
 .form-signup .form__input::-webkit-input-placeholder,
- .form-reset .form__input::-webkit-input-placeholder {
+.form-reset .form__input::-webkit-input-placeholder {
   color: rgba(0, 0, 0, 1);
-
 }
-
 
 .form-reset {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(46%, 160%);
 }
 /*
 popup form style only
@@ -419,10 +498,10 @@ BTN AREA
 .btn,
 .btn:link,
 .btn:visited {
-  width: 50%;
+  width: 70%;
   text-decoration: none;
   display: inline-block;
-  text-transform: uppercase;
+  text-transform: capitalize;
   padding: 0.6rem 1rem;
   border-radius: 4px;
   transition: all 0.2s;
@@ -434,7 +513,7 @@ BTN AREA
 
 .btn:hover {
   outline: none;
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
@@ -449,15 +528,20 @@ BTN AREA
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
+.btn-login {
+  text-align: center;
+}
+
 .btn-primary {
-  background-color: var(--primary-theme-color, #0099ff);
+  background-color: var(--primary-theme-color, #24292e);
+  text-align: center;
 }
 
 .btn-admin-new:link,
 .btn-admin-new:visited {
   text-decoration: none;
   display: inline-block;
-  text-transform: uppercase;
+  text-transform: capitalize;
   padding: 0.6rem 1rem;
   border-radius: 4px;
   transition: all 0.2s;
@@ -466,7 +550,7 @@ BTN AREA
   border: none;
   color: var(--default-black, #000);
   background-color: var(--default-white, #fff);
-  margin: 1% 0 0 90%;
+  margin: 1% 0 0 74%;
 }
 
 .btn-admin-new img {
@@ -493,7 +577,9 @@ BTN AREA
 
 .btn-pop {
   background-color: var(--admin-color, #2c3e50);
-  width: 12em !important;
+  width: 35% !important;
+  margin-left: 2.4em;
+  color: inherit;
 }
 
 .btn-agree:link,
@@ -525,12 +611,13 @@ BTN AREA
 /*
 FOOTER AREA
 */
-
-footer {
-  text-align: center;
-  position: fixed;
+.front-footer,
+.signup-footer {
+  position: absolute;
+  background-color: var(--primary-theme-color, #24292e);
   width: 100%;
-  margin-top: 2%;
+  height: 8vh;
+  text-align: center;
 }
 
 /*license style*/
@@ -577,7 +664,7 @@ th {
   height: 2em;
 }
 
-.icon-email{
+.icon-email {
   background-image: url(icons/email.svg);
   background-repeat: no-repeat;
   background-position: 01px 0;
@@ -592,8 +679,14 @@ POPUP AREA
   background-color: rgba(0, 0, 0, 0.95);
   z-index: 300;
   height: 100vh;
-  width: 100vw;
-  margin: -4em 0 0 -9em;
+  width: 104vw;
+  margin: -4em 0 0 -18em;
+  text-align: center;
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.pop-up__tab {
   text-align: center;
 }
 
@@ -601,14 +694,15 @@ POPUP AREA
 .pop-up__tab a:visited {
   display: inline-block;
   text-decoration: none;
-  color: inherit;
+  color: var(--default-white, #fff);
   padding: 0.4em 1.2em;
   border: 1px solid var(--default-white, #fff);
   margin: 0.4em 0 0 -0.4em;
+  background-color: var(--admin-color, #2c3e50);
 }
 
 .pop-up__tab a:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.493);
 }
 
 .pop-up__tab a:active {
@@ -624,30 +718,140 @@ POPUP AREA
   border-bottom: 1px solid var(--default-white, #fff);
 }
 
-.notify{
+.notify {
   position: absolute;
   top: 35%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
 .success,
 .warning {
   border: 3px solid var(--high-green, #009933);
   background-color: rgba(41, 241, 108, 0.664);
-  height:10vh;
+  height: 10vh;
   width: 45vw;
   text-align: center;
   border-radius: 4px;
 }
 
 .success p,
-.warning p{
+.warning p {
   text-transform: capitalize;
 }
 
-.warning{
+.warning {
   border: 3px solid var(--default-danger, #ff0000);
   background-color: rgba(255, 0, 0, 0.664);
+}
 
+.term-unchecked {
+  border: 2px solid red;
+  background-color: rgba(255, 0, 0, 0.6);
+  border-radius: 4px;
+  text-align: center;
+  text-transform: capitalize;
+  height: 3em;
+  width: 84%;
+  margin-bottom: 2%;
+}
+
+/* TAB MENU  */
+
+.tab-menu {
+  position: absolute;
+  left: 6em;
+}
+
+.party-section,
+.office-section {
+  top: 50%;
+  left: 50%;
+  transform: translate(29%, 21%);
+}
+
+hr {
+  width: 85%;
+  margin-left: 1%;
+}
+/*
+POPUP modal AREA
+*/
+
+.pop-modal {
+  position: absolute;
+  z-index: 200;
+  background-color: rgba(0, 0, 0, 0.692);
+  width: 100%;
+  height: 100vh;
+}
+
+.pop-messages {
+  position: absolute;
+  width: 72%;
+  height: 45vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #eee;
+  border-radius: 4px;
+  color: var(--default-black, #000);
+}
+.pop_input {
+  width: 65%;
+}
+.party-section,
+.edit-modal,
+.delete-modal,
+.office-section,
+.edit-office-modal {
+  width: 100%;
+  transform: translate(38%, 18%);
+}
+
+.edit-office-modal{
+  transform: translate(38%, 25%);
+}
+
+.delete-modal{
+   transform: translate(-6%, 25%);
+   text-align: center;
+}
+
+.pop-exit {
+  position: absolute;
+  margin-left: 74%;
+  margin-top: 1%;
+}
+
+.top-up {
+  transform: translateY(-200em);
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.top-down {
+  transform: translateY(0em);
+  opacity: 1;
+  transition: all 0.5s;
+}
+/*
+USER DETAILS AREA
+*/
+.user-details {
+  border-bottom: 1px solid var(--default-white, #fff);
+  width: 46%;
+  margin-left: 19em;
+  text-transform: capitalize;
+}
+
+.user-details__name p {
+  display: inline-block;
+}
+.age {
+  margin-left: 52%;
+}
+
+.name {
+  margin-left: 14px;
 }
