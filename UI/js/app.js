@@ -144,7 +144,57 @@ const exit = () => {
 };
 
 const yesClick = (btn) => {
-  // let btn = document.getElementById('btn');
-  btn.classList.toggle('btn-agree');
-  btn.classList.toggle('btn-yes');
-};
+
+   // let btn = document.getElementById('btn');
+    btn.classList.toggle('btn-agree');
+    btn.classList.toggle('btn-yes');
+}
+
+
+const sidebar = () => {
+    bar = document.getElementById('sidebar');
+    bar.classList.add('show');
+    bar.classList.remove('hidden');
+}
+
+const close_sidebar = () => {
+    bar = document.getElementById('sidebar');
+    bar.classList.add('hidden');
+    bar.classList.remove('show');
+}
+ 
+const edit_party = () => {
+    let pop = document.getElementById('pop');
+    let poptab = document.getElementById('pop-tab'); 
+    let popparty = document.getElementById('pop-party');
+    let popoffice = document.getElementById('pop-office');
+    let editmodal = document.getElementById('edit-modal');
+    let deletemodal = document.getElementById('delete-modal');
+    editmodal.classList.remove('hidden');
+    pop.classList.remove('hidden');
+    pop.classList.add('show');
+    poptab.classList.add('hidden');
+    popparty.classList.add('hidden');
+    popoffice.classList.add('hidden');
+    deletemodal.classList.add('hidden');
+
+
+}
+
+const delete_data = () => {
+    let pop = document.getElementById('pop');
+    let poptab = document.getElementById('pop-tab');
+    let popparty = document.getElementById('pop-party');
+    let popoffice = document.getElementById('pop-office');
+    let deletemodal = document.getElementById('delete-modal');
+    let editmodal = document.getElementById('edit-modal');
+    deletemodal.classList.remove('hidden');
+    editmodal.classList.add('hidden');
+    pop.classList.remove('hidden');
+    pop.classList.add('show');
+    poptab.classList.add('hidden');
+    popparty.classList.add('hidden');
+    popoffice.classList.add('hidden');
+
+}
+
