@@ -86,6 +86,10 @@ UTILITY CLASSES
   margin: auto;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .slim {
   transform: translateX(-20em);
   opacity: 0;
@@ -641,7 +645,7 @@ POPUP AREA
   transition: all 0.3s;
 }
 
-.pop-up__tab{
+.pop-up__tab {
   text-align: center;
 }
 
@@ -649,16 +653,15 @@ POPUP AREA
 .pop-up__tab a:visited {
   display: inline-block;
   text-decoration: none;
-  color:var(--default-white, #fff) ;
+  color: var(--default-white, #fff);
   padding: 0.4em 1.2em;
   border: 1px solid var(--default-white, #fff);
   margin: 0.4em 0 0 -0.4em;
-  background-color: var(--admin-color,#2c3e50);
-
+  background-color: var(--admin-color, #2c3e50);
 }
 
 .pop-up__tab a:hover {
- background-color: rgba(0, 0, 0, 0.493);
+  background-color: rgba(0, 0, 0, 0.493);
 }
 
 .pop-up__tab a:active {
@@ -689,8 +692,6 @@ POPUP AREA
   transform: translate(29%, 21%);
 }
 
-
-
 hr {
   width: 85%;
   margin-left: 1%;
@@ -716,22 +717,21 @@ POPUP modal AREA
   transform: translate(-50%, -50%);
   background-color: #eee;
   border-radius: 4px;
-  color: var(--default-black,#000);
-
+  color: var(--default-black, #000);
 }
-.pop_input{
+.pop_input {
   width: 65%;
 }
 .party-section,
-.edit-modal, 
+.edit-modal,
 .delete-modal,
-.office-section{
+.office-section {
   width: 100%;
   text-align: center;
 }
 
-.edit-modal{
-  transform: translate(30%,61%);
+.edit-modal {
+  transform: translate(30%, 61%);
 }
 .pop-exit {
   position: absolute;
@@ -739,15 +739,29 @@ POPUP modal AREA
   margin-top: 1%;
 }
 
-.top-up{
+.top-up {
   transform: translateY(-200em);
   opacity: 0;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .top-down {
   transform: translateY(0em);
   opacity: 1;
-  transition: all .5s;
+  transition: all 0.5s;
+}
+/*
+USER DETAILS AREA
+*/
+.user-details {
+  border-bottom: 1px solid var(--default-white,#fff);
+  width: 46%;
+  margin-left: 19em;
 }
 
+.user-details__name p{
+  display: inline-block;
+}
+.age{
+  margin-left:65%;
+}
