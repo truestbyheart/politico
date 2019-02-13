@@ -1,8 +1,0 @@
-language: node_js
-node_js:
-  - 10
-  - 9
-  - node
-cache:
-  -node_modules
-after_success: npm run coverage
