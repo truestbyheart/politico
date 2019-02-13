@@ -2,7 +2,7 @@
 GLOBAL VARIABLES
 */
 :root {
-  --primary-theme-color: #0000ff;
+  --primary-theme-color: #24292e;
   --default-background: #75a3a3;
   --default-black: #000;
   --default-white: #fff;
@@ -18,15 +18,16 @@ GLOBAL CONFIGURATION
 html,
 body {
   font-family: "lato", san serif, tahoma;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 body {
   padding: 0;
-  margin: 0;
-  /* //background-color: var(--default-background,#75a3a3); */
+  margin: 0 auto;
   color: var(--default-white, #fff);
 }
+
+
 
 /*
 PAGES STYLE
@@ -36,7 +37,7 @@ PAGES STYLE
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(img/ballot-large.jpg);
   background-size: cover;
-  height: 90vh;
+  height: 86vh;
 }
 
 .signup-page {
@@ -79,7 +80,10 @@ UTILITY CLASSES
 .show {
   display: block;
 }
-
+.center-content{
+  max-width: 52.25em;
+  margin: auto;
+}
 /*
 PROFILEAREA
 */
@@ -123,7 +127,7 @@ SIDEBAR AREA
   display: block;
   text-decoration: none;
   padding: 0.4em 1.2em;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .sidebar-list__item:hover {
@@ -163,7 +167,7 @@ HEADER AREA
 */
 
 header {
-  background-color: var(--primary-theme-color, #0099ff);
+  background-color: var(--primary-theme-color, #24292e);
   width: 100%;
   height: 4em;
   text-align: center;
@@ -191,7 +195,7 @@ header {
   background-color: rgba(255, 255, 255, 0.4);
   border-bottom: 3px solid var(--default-white, #fff);
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .header-logo span {
@@ -218,7 +222,7 @@ nav ul li a:active {
   transition: 0.2s ease-in;
   color: var(--default-white, #fff);
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 nav ul li a:hover {
@@ -231,8 +235,7 @@ nav ul li a:hover {
 FORM AREA
 */
 .form {
-  width: 100%;
-  text-align: center;
+  width: 40%;
 }
 
 .form-element {
@@ -245,6 +248,7 @@ p.login {
   display: inline-block;
   margin-left: 0;
 }
+
 
 .form-element p.forgot a:link,
 .form-element p.forgot a:visited {
@@ -263,13 +267,13 @@ p.login {
 }
 
 .form__input {
-  width: 50%;
+  width: 72%;
   padding: 0.5rem 0.7rem;
   border-radius: 2px;
   border: none;
   font-size: 1rem;
   border-bottom: 3px solid transparent;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.98);
   transition: all 0.3s;
 }
 
@@ -314,13 +318,20 @@ p.login {
 
 .form-heading h3 {
   font-size: 2em;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin-bottom: 0.2em;
 }
 
 .form-heading p {
   font-size: 1em;
   text-transform: capitalize;
+}
+
+.form_label {
+  display: inline;
+  margin: 12px 0 12px 0;
+  text-align: left;
+  text-transform: capitalize; 
 }
 
 #info {
@@ -345,11 +356,12 @@ p.login {
 /*
 form style only for sigin
 */
+
 .form-login {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /*
@@ -392,10 +404,10 @@ BTN AREA
 .btn,
 .btn:link,
 .btn:visited {
-  width: 50%;
+  width: 70%;
   text-decoration: none;
   display: inline-block;
-  text-transform: uppercase;
+  text-transform: capitalize;
   padding: 0.6rem 1rem;
   border-radius: 4px;
   transition: all 0.2s;
@@ -407,7 +419,7 @@ BTN AREA
 
 .btn:hover {
   outline: none;
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
@@ -422,15 +434,19 @@ BTN AREA
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
+.btn-login {
+  text-align: center;
+}
+
 .btn-primary {
-  background-color: var(--primary-theme-color, #0099ff);
+  background-color: var(--primary-theme-color, #24292e);
 }
 
 .btn-admin-new:link,
 .btn-admin-new:visited {
   text-decoration: none;
   display: inline-block;
-  text-transform: uppercase;
+  text-transform: capitalize;
   padding: 0.6rem 1rem;
   border-radius: 4px;
   transition: all 0.2s;
@@ -490,12 +506,12 @@ BTN AREA
 /*
 FOOTER AREA
 */
-
-footer {
-  text-align: center;
-  position: fixed;
+.front-footer{
+  position: absolute;
+  background-color: var(--primary-theme-color,#24292e);
   width: 100%;
-  margin-top: 2%;
+  height: 8vh;
+  text-align: center;
 }
 
 /*license style*/
