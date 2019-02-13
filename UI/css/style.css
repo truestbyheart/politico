@@ -806,13 +806,18 @@ POPUP modal AREA
 .office-section,
 .edit-office-modal {
   width: 100%;
-  text-align: center;
+  transform: translate(38%, 18%);
 }
 
-.edit-modal,
-.edit-office-modal {
-  transform: translate(30%, 61%);
+.edit-office-modal{
+  transform: translate(38%, 25%);
 }
+
+.delete-modal{
+   transform: translate(-6%, 25%);
+   text-align: center;
+}
+
 .pop-exit {
   position: absolute;
   margin-left: 74%;
@@ -844,9 +849,9 @@ USER DETAILS AREA
   display: inline-block;
 }
 .age {
-  margin-left: 63%;
+  margin-left: 52%;
 }
 
-.name{
+.name {
   margin-left: 14px;
 }

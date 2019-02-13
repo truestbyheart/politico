@@ -11,43 +11,63 @@
   <body>
     <div class="pop-modal top-up" id="pop">
       <div class="pop-messages " id="pop-msg">
-        <div class="pop-exit"><a href="javascript:void(0)" class="close-sidebar" onclick="exit()">
-          <img src="./../img/icons/cancel.svg" class="icon" alt="close" />
-        </a></div>
+        <div class="pop-exit">
+          <a href="javascript:void(0)" class="close-sidebar" onclick="exit()">
+            <img src="./../img/icons/cancel.svg" class="icon" alt="close" />
+          </a>
+        </div>
         <div class="new-data show" id="new-data">
           <div class="pop-up__tab" id="pop-tab">
             <a href="#" onclick="popUpTab('party')">PARTY</a>
             <a href="#" onclick="popUpTab('office')">OFFICE</a>
           </div>
-            <div class="party-section" id="pop-party">
-              <div class="form">
-                <div id="notify"></div>
-        
-                <div class="form-element">
-                  <label for="name" class="form_label">name:</label>
-                  <input type="text" class="form__input pop_input" name="name" placeholder="name" minlength="2" id="name"
-                    required />
-                </div>
-        
-                <div class="form-element">
-                  <label for="abbreviation" class="form_label">Abbre:</label>
-                  <input type="text" class="form__input pop_input" name="abbreviation" placeholder="abbreviation" minlength="2"
-                    id="abbrev" required />
-                </div>
-                <div class="form-element">
-                  <a href="#" class="btn btn-pop">Add</a>
-                </div>
+          <div class="party-section" id="pop-party">
+            <div class="form">
+              <div id="notify"></div>
+              <label for="name" class="form_label">name:</label>
+              <div class="form-element">
+                <input
+                  type="text"
+                  class="form__input pop_input"
+                  name="name"
+                  placeholder="name"
+                  minlength="2"
+                  id="name"
+                  required
+                />
+              </div>
+              <label for="abbreviation" class="form_label">Abbre:</label>
+              <div class="form-element">
+                <input
+                  type="text"
+                  class="form__input pop_input"
+                  name="abbreviation"
+                  placeholder="abbreviation"
+                  minlength="2"
+                  id="abbrev"
+                  required
+                />
+              </div>
+              <div class="form-element">
+                <a href="#" class="btn btn-pop">Add</a>
               </div>
             </div>
-       
-        
+          </div>
+
           <div class="office-section hidden" id="pop-office">
             <div class="form">
               <div id="notify"></div>
+              <label for="office" class="form_label">office:</label>
               <div class="form-element">
-                <label for="office" class="form_label">office:</label>
-                <input type="text" class="form__input pop_input" name="office" placeholder="office" minlength="2" id="name"
-                  required />
+                <input
+                  type="text"
+                  class="form__input pop_input"
+                  name="office"
+                  placeholder="office"
+                  minlength="2"
+                  id="name"
+                  required
+                />
               </div>
               <div class="form-element">
                 <a href="#" class="btn btn-pop">add</a>
@@ -58,16 +78,30 @@
         <section class="edit-modal hidden" id="edit-modal">
           <div class="form">
             <div id="notify"></div>
+            <label for="name" class="form_label">name:</label>
             <div class="form-element">
-              <label for="name" class="form_label">name:</label>
-              <input type="text" class="form__input pop_input" name="name" placeholder="name" minlength="2" id="name"
-                required />
+              <input
+                type="text"
+                class="form__input pop_input"
+                name="name"
+                placeholder="name"
+                minlength="2"
+                id="name"
+                required
+              />
             </div>
-        
+            <label for="abbreviation" class="form_label">Abbre:</label>
+
             <div class="form-element">
-              <label for="abbreviation" class="form_label">Abbre:</label>
-              <input type="text" class="form__input pop_input" name="abbreviation" placeholder="abbreviation" minlength="2"
-                id="abbrev" required />
+              <input
+                type="text"
+                class="form__input pop_input"
+                name="abbreviation"
+                placeholder="abbreviation"
+                minlength="2"
+                id="abbrev"
+                required
+              />
             </div>
             <div class="form-element">
               <a href="#" class="btn btn-pop">Add</a>
@@ -77,10 +111,17 @@
         <section class="edit-office-modal hidden" id="edit-office-modal">
           <div class="form">
             <div id="notify"></div>
+            <label for="name" class="form_label">name:</label>
             <div class="form-element">
-              <label for="name" class="form_label">name:</label>
-              <input type="text" class="form__input pop_input" name="name" placeholder="name" minlength="2" id="name"
-                required />
+              <input
+                type="text"
+                class="form__input pop_input"
+                name="name"
+                placeholder="name"
+                minlength="2"
+                id="name"
+                required
+              />
             </div>
             <div class="form-element">
               <a href="#" class="btn btn-pop">Add</a>
