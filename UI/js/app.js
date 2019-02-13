@@ -138,29 +138,33 @@ const pop = () => {
 };
 
 const exit = () => {
-  const pop = document.getElementById('pop');
-  pop.classList.add('hidden');
-  pop.classList.remove('show');
-};
-
+    let pop = document.getElementById('pop');
+    pop.classList.add('hidden');
+    pop.classList.remove('show');
+}
+let show =true;
 const yesClick = (btn) => {
 
-   // let btn = document.getElementById('btn');
-    btn.classList.toggle('btn-agree');
-    btn.classList.toggle('btn-yes');
-}
+        btn.classList.remove('btn-agree');
+        btn.classList.add('btn-yes');
+    let unwanted = document.getElementsByClassName('btn-agree');
+    for (let i =0; i < unwanted.length; i++) {     
+        unwanted[i].classList.add('hidden');
+        unwanted[i].classList.remove('show');
+    }
+   
 
 
 const sidebar = () => {
     bar = document.getElementById('sidebar');
-    bar.classList.add('show');
-    bar.classList.remove('hidden');
+    bar.classList.add('slide');
+    bar.classList.remove('slim');
 }
 
 const close_sidebar = () => {
     bar = document.getElementById('sidebar');
-    bar.classList.add('hidden');
-    bar.classList.remove('show');
+    bar.classList.add('slim');
+    bar.classList.remove('slide');
 }
  
 const edit_party = () => {
