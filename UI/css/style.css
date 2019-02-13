@@ -8,7 +8,7 @@ GLOBAL VARIABLES
   --default-white: #fff;
   --default-danger: #ff3333;
   --admin-color: #2c3e50;
-  --politician-page: #336e7b;
+  --politician-page: #2c3e50;
 }
 
 /*
@@ -27,8 +27,6 @@ body {
   color: var(--default-white, #fff);
 }
 
-
-
 /*
 PAGES STYLE
 */
@@ -45,7 +43,7 @@ PAGES STYLE
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(img/voters-large.jpg);
   background-size: cover;
-  height: 122vh;
+  height: 110vh;
 }
 
 .forgot-page {
@@ -64,6 +62,8 @@ PAGES STYLE
   background-color: var(--admin-color, #2c3e50);
   color: #fff;
   position: absolute;
+  width: 100%;
+  text-align: center;
 }
 
 .politician-page {
@@ -71,7 +71,7 @@ PAGES STYLE
   background-color: RGBA(44, 62, 80, 0.5);
 }
 .politician-footer {
-  background-color: var(--politician-page, #336e7b);
+  background-color: var(--politician-page, #2c3e50);
   margin-top: -2%;
 }
 
@@ -80,6 +80,7 @@ UTILITY CLASSES
 */
 .hidden {
   display: none;
+  opacity: 0;
 }
 
 .show {
@@ -92,10 +93,36 @@ UTILITY CLASSES
   margin-left: 0.3em;
 }
 
-
-.center-content{
+.center-content {
   max-width: 52.25em;
   margin: auto;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.slim {
+  transform: translateX(-20em);
+  opacity: 0;
+  transition: all 0.6s;
+}
+
+.slide {
+  opacity: 1;
+  transform: translateX(0em);
+  transition: all 0.6s;
+}
+
+.top-up {
+  transform: translateY(-200em);
+  opacity: 0;
+  transition: all 0.6s;
+}
+.top-down {
+  transform: translateY(0em);
+  opacity: 1;
+  transition: all 0.6s;
 }
 
 /*
@@ -104,6 +131,7 @@ PROFILEAREA
 .profile {
   display: inline-block;
   position: relative;
+  margin-left: 80%;
 }
 
 .profile__pic {
@@ -126,19 +154,58 @@ PROFILEAREA
   margin-left: 2em;
   text-transform: capitalize;
 }
+.pro-link:link,
+.pro-link:visited {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.pro-link:hover {
+  color: RGBA(255, 255, 255, 0.5);
+  border-bottom: none;
+}
+
 /*
 SIDEBAR AREA
 */
 .sidebar {
-  height: 90vh;
-  width: 8em;
+  margin-top: -4%;
+  height: 100vh;
+  width: 10em;
+  z-index: 200;
   background-color: var(--admin-color, #2c3e50);
   position: absolute;
   text-align: center;
 }
 
+.close-sidebar {
+  margin-left: 7em;
+}
+
+.lower-tabular {
+  margin-top: 100%;
+}
+
+.sidebar-logo a:link,
+.sidebar-logo a:visited,
+.sidebar-logo a:active {
+  float: left;
+  margin: 0.5em 0 0 0.6em;
+  color: var(--default-white, #fff);
+  background-color: rgba(255, 255, 255, 0.4);
+  border-bottom: 3px solid var(--default-white, #fff);
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 1.4em;
+}
+
+.sidebar-logo span {
+  font-size: 2em;
+  background-color: white;
+  color: var(--default-black, #000);
+}
+
 .politician-page .sidebar {
-  background-color: var(--politician-page, #336e7b);
+  background-color: var(--politician-page, #2c3e50);
 }
 
 .sidebar-list__item:link,
@@ -149,7 +216,9 @@ SIDEBAR AREA
   padding: 0.4em 1.2em;
   text-transform: capitalize;
 }
-
+.tabular-menu {
+  margin-top: 60%;
+}
 .sidebar-list__item:hover {
   background-color: rgba(255, 255, 255, 0.4);
 }
@@ -163,7 +232,6 @@ ADMIN-CONTENT AREA
 */
 .admin-content {
   height: 90vh;
-  margin-left: 8.2em;
 }
 
 /*
@@ -171,7 +239,6 @@ POLITICIAN-CONTENT AREA
 */
 .politician-content {
   height: 90vh;
-  margin-left: 8.2em;
   margin-bottom: 1em;
 }
 
@@ -198,7 +265,7 @@ header {
   background-color: var(--admin-color, #2c3e50);
 }
 .politician-header {
-  background-color: var(--politician-page, #336e7b);
+  background-color: var(--politician-page, #2c3e50);
 }
 
 .admin-header nav,
@@ -266,14 +333,11 @@ FORM AREA
 p.login {
   width: 40%;
   display: inline-block;
-  
 }
 
-.btn-signup{
+.btn-signup {
   text-align: center;
-
 }
-
 
 .form-element p.forgot a:link,
 .form-element p.forgot a:visited {
@@ -287,8 +351,8 @@ p.login {
 }
 
 .form-align .form-element input {
-    display: inline-block;
-    width: 80%;
+  display: inline-block;
+  width: 80%;
 }
 
 .form__input {
@@ -324,14 +388,14 @@ p.login {
 .form-error {
   border: 2px solid #ff0000;
 
-  background-image: url(icons/error-z.png) !important;
+  background-image: url(icons/no.svg) !important;
   background-repeat: no-repeat;
-  background-position: 99% 5px;
+  background-position: 99% 0px;
 }
 
 .form-success {
   border: 2px solid #55c57a;
-  background-image: url(icons/tick.png) !important;
+  background-image: url(icons/yes.svg) !important;
   background-repeat: no-repeat;
   background-position: 100% 0px;
 }
@@ -355,7 +419,7 @@ p.login {
 .form_label {
   display: inline-block;
   text-align: left;
-  text-transform: capitalize; 
+  text-transform: capitalize;
 }
 
 #info {
@@ -382,10 +446,10 @@ form style only for sigin
 */
 
 .form-login {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
 }
 
 /*
@@ -393,9 +457,8 @@ form style only for signup
 */
 .form-signup {
   position: absolute;
-  top: 66%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 35%;
+  top: 12%;
 }
 
 .form-signup .form__input,
@@ -404,11 +467,9 @@ form style only for signup
 }
 
 .form-signup .form__input::-webkit-input-placeholder,
- .form-reset .form__input::-webkit-input-placeholder {
+.form-reset .form__input::-webkit-input-placeholder {
   color: rgba(0, 0, 0, 1);
-
 }
-
 
 .form-reset {
   position: absolute;
@@ -490,7 +551,7 @@ BTN AREA
   border: none;
   color: var(--default-black, #000);
   background-color: var(--default-white, #fff);
-  margin: 1% 0 0 90%;
+  margin: 1% 0 0 74%;
 }
 
 .btn-admin-new img {
@@ -517,7 +578,9 @@ BTN AREA
 
 .btn-pop {
   background-color: var(--admin-color, #2c3e50);
-  width: 12em !important;
+  width: 35% !important;
+  margin-left: 2.4em;
+  color: inherit;
 }
 
 .btn-agree:link,
@@ -550,9 +613,9 @@ BTN AREA
 FOOTER AREA
 */
 .front-footer,
-.signup-footer{
+.signup-footer {
   position: absolute;
-  background-color: var(--primary-theme-color,#24292e);
+  background-color: var(--primary-theme-color, #24292e);
   width: 100%;
   height: 8vh;
   text-align: center;
@@ -602,7 +665,7 @@ th {
   height: 2em;
 }
 
-.icon-email{
+.icon-email {
   background-image: url(icons/email.svg);
   background-repeat: no-repeat;
   background-position: 01px 0;
@@ -617,8 +680,14 @@ POPUP AREA
   background-color: rgba(0, 0, 0, 0.95);
   z-index: 300;
   height: 100vh;
-  width: 100vw;
-  margin: -4em 0 0 -9em;
+  width: 104vw;
+  margin: -4em 0 0 -18em;
+  text-align: center;
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.pop-up__tab {
   text-align: center;
 }
 
@@ -626,14 +695,15 @@ POPUP AREA
 .pop-up__tab a:visited {
   display: inline-block;
   text-decoration: none;
-  color: inherit;
+  color: var(--default-white, #fff);
   padding: 0.4em 1.2em;
   border: 1px solid var(--default-white, #fff);
   margin: 0.4em 0 0 -0.4em;
+  background-color: var(--admin-color, #2c3e50);
 }
 
 .pop-up__tab a:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.493);
 }
 
 .pop-up__tab a:active {
@@ -649,41 +719,128 @@ POPUP AREA
   border-bottom: 1px solid var(--default-white, #fff);
 }
 
-.notify{
+.notify {
   position: absolute;
   top: 35%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
 .success,
 .warning {
   border: 3px solid var(--high-green, #009933);
   background-color: rgba(41, 241, 108, 0.664);
-  height:10vh;
+  height: 10vh;
   width: 45vw;
   text-align: center;
   border-radius: 4px;
 }
 
 .success p,
-.warning p{
+.warning p {
   text-transform: capitalize;
 }
 
-.warning{
+.warning {
   border: 3px solid var(--default-danger, #ff0000);
   background-color: rgba(255, 0, 0, 0.664);
-
 }
 
-.term-unchecked{
+.term-unchecked {
   border: 2px solid red;
-  background-color: rgba(255,0,0,.6);
+  background-color: rgba(255, 0, 0, 0.6);
   border-radius: 4px;
   text-align: center;
   text-transform: capitalize;
   height: 3em;
   width: 84%;
   margin-bottom: 2%;
+}
+
+/* TAB MENU  */
+
+.tab-menu {
+  position: absolute;
+  left: 6em;
+}
+
+.party-section,
+.office-section {
+  top: 50%;
+  left: 50%;
+  transform: translate(29%, 21%);
+}
+
+hr {
+  width: 85%;
+  margin-left: 1%;
+}
+/*
+POPUP modal AREA
+*/
+
+.pop-modal {
+  position: absolute;
+  z-index: 200;
+  background-color: rgba(0, 0, 0, 0.692);
+  width: 100%;
+  height: 100vh;
+}
+
+.pop-messages {
+  position: absolute;
+  width: 72%;
+  height: 45vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #eee;
+  border-radius: 4px;
+  color: var(--default-black, #000);
+}
+.pop_input {
+  width: 65%;
+}
+.party-section,
+.edit-modal,
+.delete-modal,
+.office-section {
+  width: 100%;
+  text-align: center;
+}
+
+.edit-modal {
+  transform: translate(30%, 61%);
+}
+.pop-exit {
+  position: absolute;
+  margin-left: 74%;
+  margin-top: 1%;
+}
+
+.top-up {
+  transform: translateY(-200em);
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.top-down {
+  transform: translateY(0em);
+  opacity: 1;
+  transition: all 0.5s;
+}
+/*
+USER DETAILS AREA
+*/
+.user-details {
+  border-bottom: 1px solid var(--default-white, #fff);
+  width: 46%;
+  margin-left: 19em;
+}
+
+.user-details__name p {
+  display: inline-block;
+}
+.age {
+  margin-left: 65%;
 }
