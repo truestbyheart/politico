@@ -473,9 +473,7 @@ form style only for signup
 
 .form-reset {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(46%, 160%);
 }
 /*
 popup form style only
@@ -536,6 +534,7 @@ BTN AREA
 
 .btn-primary {
   background-color: var(--primary-theme-color, #24292e);
+  text-align: center;
 }
 
 .btn-admin-new:link,
@@ -804,12 +803,14 @@ POPUP modal AREA
 .party-section,
 .edit-modal,
 .delete-modal,
-.office-section {
+.office-section,
+.edit-office-modal {
   width: 100%;
   text-align: center;
 }
 
-.edit-modal {
+.edit-modal,
+.edit-office-modal {
   transform: translate(30%, 61%);
 }
 .pop-exit {
@@ -836,11 +837,16 @@ USER DETAILS AREA
   border-bottom: 1px solid var(--default-white, #fff);
   width: 46%;
   margin-left: 19em;
+  text-transform: capitalize;
 }
 
 .user-details__name p {
   display: inline-block;
 }
 .age {
-  margin-left: 65%;
+  margin-left: 63%;
+}
+
+.name{
+  margin-left: 14px;
 }

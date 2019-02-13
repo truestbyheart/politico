@@ -131,49 +131,10 @@ const popUpTab = value => {
 // };
 
 const exit = () => {
-<<<<<<< HEAD
-    let pop = document.getElementById('pop');
-    pop.classList.add('hidden');
-    pop.classList.remove('show');
-}
-
-const yesClick = (btn) => {
-    // let btn = document.getElementById('btn');
-    btn.classList.toggle('btn-agree');
-    btn.classList.toggle('btn-yes');
-}
-
-const validateEmail = (email) => {
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-}
-
-const sendResetLink = () => {
-    let notify = document.getElementById('notify');
-    let email = document.getElementById('email');
-
-    if (validateEmail(email.value)) {
-        notify.innerHTML = `
-     <div class = "success">
-      <p> check your email
-      for the reset link</p>
-     </div>
-    
-     `
-    } else {
-        notify.innerHTML = `
-        <div class="warning">
-        <p>
-            please enter a valid or the email tou used to sign up </p>
-        </div>
-        
-        `
-    }
-=======
   let pop = document.getElementById("pop");
   pop.classList.remove("top-down");
   pop.classList.add("top-up");
-  
+
 };
 const yesClick = btn => {
   btn.classList.remove("btn-agree");
@@ -218,7 +179,8 @@ const pop = (popreq) => {
   let newdata = document.getElementById("new-data");
   let deletemodal = document.getElementById("delete-modal");
   let editmodal = document.getElementById("edit-modal");
-  
+  let editofficemodal = document.getElementById("edit-office-modal");
+
   pop.classList.remove('top-up');
   pop.classList.add('top-down');
 
@@ -237,6 +199,10 @@ const pop = (popreq) => {
       newdata.classList.remove("hidden");
       newdata.classList.add("show");
     }
+    if (editofficemodal.classList[1] == "show") {
+      editofficemodal.classList.remove("show");
+      editofficemodal.classList.add("hidden");
+    }
   } else if (popreq === "edit") {
     pop.classList.remove("hidden");
     pop.classList.add("show");
@@ -248,6 +214,10 @@ const pop = (popreq) => {
       deletemodal.classList.remove("show");
       deletemodal.classList.add("hidden");
     }
+    if (editofficemodal.classList[1] == "show") {
+      editofficemodal.classList.remove("show");
+      editofficemodal.classList.add("hidden");
+    }
   } else if (popreq === "delete") {
     pop.classList.remove("hidden");
     pop.classList.add("show");
@@ -257,8 +227,57 @@ const pop = (popreq) => {
     editmodal.classList.remove("show");
     deletemodal.classList.remove("hidden");
     deletemodal.classList.add("show");
+
+    if(editofficemodal.classList[1] == "show"){
+      editofficemodal.classList.remove("show");
+      editofficemodal.classList.add("hidden");
+    }
+  } 
+else if ('edit-office'){
+    pop.classList.remove("hidden");
+    pop.classList.add("show");
+    editofficemodal.classList.remove('hidden');
+    editofficemodal.classList.add('show');
+    if (deletemodal.classList[2] === "show") {
+      deletemodal.classList.remove("show");
+      deletemodal.classList.add("hidden");
+    }
+    if (editmodal.classList[1] === "show") {
+      editmodal.classList.remove("show");
+      editmodal.classList.add("hidden");
+    }
+    if (newdata.classList[1] == "show") {
+      newdata.classList.remove("show");
+      newdata.classList.add("hidden");
+    }
+
+}
+
+}
+const validateEmail = (email) => {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
+const sendResetLink = () => {
+  let notify = document.getElementById('notify');
+  let email = document.getElementById('email');
+
+  if (validateEmail(email.value)) {
+    notify.innerHTML = `
+     <div class = "success">
+      <p> check your email
+      for the reset link</p>
+     </div>
+    
+     `
+  } else {
+    notify.innerHTML = `
+        <div class="warning">
+        <p>
+            please enter a valid or the email tou used to sign up </p>
+        </div>
+        
+        `
   }
-
-
->>>>>>> 91025d4bd32f3f45d640f837843b5a38844dfd37
 }

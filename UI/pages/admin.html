@@ -74,6 +74,19 @@
             </div>
           </div>
         </section>
+        <section class="edit-office-modal hidden" id="edit-office-modal">
+          <div class="form">
+            <div id="notify"></div>
+            <div class="form-element">
+              <label for="name" class="form_label">name:</label>
+              <input type="text" class="form__input pop_input" name="name" placeholder="name" minlength="2" id="name"
+                required />
+            </div>
+            <div class="form-element">
+              <a href="#" class="btn btn-pop">Add</a>
+            </div>
+          </div>
+        </section>
         <section class="delete-modal center-content hidden" id="delete-modal">
           <p>Are you sure?</p>
           <div class="form-element">
@@ -224,7 +237,7 @@
               <tr>
                 <td>Member of parliment</td>
                 <td>
-                  <a href="#" onclick="pop('edit')"
+                  <a href="#" onclick="pop('edit-office')"
                     ><img src="./../img/icons/edit.svg" class="icon" alt="edit"
                   /></a>
                 </td>
@@ -241,7 +254,7 @@
               <tr>
                 <td>District executive officer</td>
                 <td>
-                  <a href="#" onclick="pop('edit')"
+                  <a href="#" onclick="pop('edit-office')"
                     ><img src="./../img/icons/edit.svg" class="icon" alt="edit"
                   /></a>
                 </td>
