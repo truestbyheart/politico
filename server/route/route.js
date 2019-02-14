@@ -1,37 +1,50 @@
-/* eslint-disable prefer-destructuring */
-const {
-  ifExist, increment, partyEntityValidator, officeEntityValidator,
-} = require('./../helper/helper');
+import {
+  ifExist,
+  increment,
+  partyEntityValidator,
+  partyPropertySpecs,
+  isMissingValue,
+  officeEntityValidator,
+  officePropertySpecs,
+  ifOfficeExist,
+} from '../helper/helper';
 
-const Parties = [];
-const Offices = [];
+// eslint-disable-next-line import/no-mutable-exports
+export let Parties = [];
+// eslint-disable-next-line import/no-mutable-exports
+export let Offices = [];
 
-
-const defaultRoute = (req, res) => {
+export const defaultRoute = (req, res) => {
   res.status(200).json({
     status: 200,
     message: 'welcome to politico API, please used the specified endpoints from the readme file',
   });
 };
 
-const postParty = (req, res) => {
-  if (partyEntityValidator(req.body)) {
-    if (ifExist(req.body, Parties)) {
-      res.status(200).json({ status: 200, message: 'The party already exists' });
+
+export const postParty = ({ body }, res) => {
+  if (partyEntityValidator(body)) {
+    if (ifExist(body, Parties)) {
+      res.status(200).json({ status: 200, message: 'The party already exists or your logo Url exists :-)' });
     } else {
-      increment(req.body, Parties);
-      res.status(201).json({ status: 201, Data: Parties });
+      const response = increment(body, Parties);
+      if (response === undefined) {
+        res.status(201).json({ status: 201, data: Parties });
+      } else {
+        res.status(200).json({ status: 200, data: response });
+      }
     }
   } else {
+    const missings = partyPropertySpecs(body);
     res.status(200).json({
       status: 200,
-      message: 'Please make sure all properties are filled',
-      note: 'The data should be case sensitive to the entity specs',
+      message: missings,
     });
   }
 };
 
-const getParties = (req, res) => {
+
+export const getParties = (req, res) => {
   if (Parties.length === 0) {
     res.json({
       status: 404,
@@ -40,14 +53,13 @@ const getParties = (req, res) => {
   } else {
     res.json({
       status: 200,
-      Data: Parties,
+      data: Parties,
     });
   }
 };
 
-const getParty = (req, res) => {
-  const id = req.params.id;
 
+export const getParty = (req, res) => {
   if (Parties.length === 0) {
     res.json({
       status: 404,
@@ -56,13 +68,13 @@ const getParty = (req, res) => {
   } else {
     res.json({
       status: 200,
-      Data: Parties[id - 1],
+      data: Parties[req.params.id - 1],
     });
   }
 };
 
-const editParty = (req, res) => {
-  const id = req.params.id;
+export const editParty = (req, res) => {
+  const { id } = req.params;
   const oldData = Parties;
   const newData = [];
   const party = req.body;
@@ -75,32 +87,52 @@ const editParty = (req, res) => {
       message: 'There is no party with the specified ID',
     });
   } else {
-    res.json({
-      status: 200,
-      message: 'The data has been succefully edited',
-      Data: editedParty,
-    });
+    const response = isMissingValue(req.body);
+    if (ifExist(req.body, Parties)) {
+      res.status(200).json({ status: 200, message: 'The party already exists or your logo Url exists :-)' });
+    } else if (!response) {
+      res.json({
+        status: 200,
+        message: 'Thedata has been succefully edited',
+        data: editedParty,
+      });
+    } else {
+      res.json({
+        status: 200,
+        data: response,
+      });
+    }
   }
 };
 
-const deleteParty = (req, res) => {
-  const id = req.params.id;
-  if (Parties[id - 1] === undefined) {
+
+export const deleteParty = (req, res) => {
+  const newData = [];
+  if (Parties[req.params.id - 1] === undefined) {
     res.json({
       status: 404,
       message: 'There is no party with the specified ID',
     });
   } else {
-    delete Parties[id - 1];
+    delete Parties[req.params.id - 1];
+    for (let i = 0; i < Parties.length; i++) {
+      if (Parties[i] !== undefined) {
+        newData.push(Parties[i]);
+      }
+    }
+
+    Parties.length = 0;
+    Parties = newData;
     res.json({
       status: 200,
       message: 'The party has been deleted successfully',
     });
   }
 };
-const postOffice = (req, res) => {
-  if (officeEntityValidator(req.body)) {
-    if (ifExist(req.body, Offices)) {
+
+export const postOffice = ({ body }, res) => {
+  if (officeEntityValidator(body)) {
+    if (ifOfficeExist(body, Offices)) {
       res
         .status(200)
         .json({
@@ -108,19 +140,23 @@ const postOffice = (req, res) => {
           message: 'The office already exists',
         });
     } else {
-      increment(req.body, Offices);
-      res.status(201).json({ status: 201, Data: Offices });
+      const response = increment(body, Offices);
+      if (response === undefined) {
+        res.status(201).json({ status: 201, data: Offices });
+      } else {
+        res.status(200).json({ status: 200, data: response });
+      }
     }
   } else {
-    res.json({
+    const missings = officePropertySpecs(body);
+    res.status(200).json({
       status: 200,
-      message: 'Please make sure all properties are filled',
-      note: 'The data should be case sensitive to the entity specs',
+      message: missings,
     });
   }
 };
 
-const getOffices = (req, res) => {
+export const getOffices = (req, res) => {
   if (Offices.length === 0) {
     res.json({
       status: 404,
@@ -129,20 +165,7 @@ const getOffices = (req, res) => {
   } else {
     res.json({
       status: 200,
-      Data: Offices,
+      data: Offices,
     });
   }
-};
-
-module.exports = {
-  defaultRoute,
-  postParty,
-  getParties,
-  Parties,
-  getParty,
-  editParty,
-  deleteParty,
-  postOffice,
-  Offices,
-  getOffices,
 };
