@@ -42,12 +42,10 @@ export const increment = (body, array) => {
       array.push(body);
     }
   } else {
-    const cleanArray = array;
-    cleanArray.length = 0;
-    const emptyValue = isMissingValue(body);
-    cleanArray.push(emptyValue);
+    return isMissingValue(body);
   }
 };
+
 
 export const partyEntityValidator = (body) => {
   if (

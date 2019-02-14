@@ -17,8 +17,12 @@ export const postParty = ({ body }, res) => {
     if (ifExist(body, Parties)) {
       res.status(200).json({ status: 200, message: 'The party already exists or your logo Url exists :-)' });
     } else {
-      increment(body, Parties);
-      res.status(201).json({ status: 201, Data: Parties });
+      const response = increment(body, Parties);
+      if (response === undefined) {
+        res.status(201).json({ status: 201, Data: Parties });
+      } else {
+        res.status(201).json({ status: 201, Data: response });
+      }
     }
   } else {
     const missings = partyPropertySpecs(body);
