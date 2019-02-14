@@ -171,7 +171,7 @@ export const getOffices = (req, res) => {
 };
 
 export const getOffice = (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params;
   if (Offices[id - 1] === undefined) {
     res.json({
       status: 404,
