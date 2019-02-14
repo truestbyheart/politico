@@ -1,8 +1,10 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-undef */
-const chai = require('chai');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import { app } from '../server';
+import { Parties } from '../route/route';
 
-const chaiHttp = require('chai-http');
 chai.use(require('chai-like'));
 chai.use(require('chai-things'));
 
@@ -10,8 +12,6 @@ chai.use(chaiHttp);
 
 // eslint-disable-next-line no-unused-vars
 const expect = chai.expect;
-const { app } = require('../server');
-const { Parties } = require('../route/route');
 
 
 describe('DELETE /parties', () => {
@@ -19,10 +19,10 @@ describe('DELETE /parties', () => {
     Parties.length = 0;
     chai.request(app)
       .delete('/v1/parties/5')
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        expect(res.body).to.have.property('status').eql(404);
-        expect(res.body).to.have.property('message').eql('There is no party with the specified ID');
+      .end((err, { status, body }) => {
+        expect(status).to.equal(200);
+        expect(body).to.have.property('status').eql(404);
+        expect(body).to.have.property('message').eql('There is no party with the specified ID');
         done();
       });
   });
@@ -39,10 +39,10 @@ describe('DELETE /parties', () => {
       .end();
     chai.request(app)
       .delete('/v1/parties/1')
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        expect(res.body.status).to.equal(200);
-        expect(res.body).to.have.property('message').eql('The party has been deleted successfully');
+      .end((err, { status, body }) => {
+        expect(status).to.equal(200);
+        expect(body.status).to.equal(200);
+        expect(body).to.have.property('message').eql('The party has been deleted successfully');
         done();
       });
   });
