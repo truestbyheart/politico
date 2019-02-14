@@ -1,15 +1,16 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-undef */
-const chai = require('chai');
+import chai from 'chai';
 
-const chaiHttp = require('chai-http');
+import chaiHttp from 'chai-http';
+import { app } from '../server';
+import { Parties } from '../route/route';
+
 chai.use(require('chai-like'));
 chai.use(require('chai-things'));
 
 // eslint-disable-next-line no-unused-vars
 const expect = chai.expect;
-const { app } = require('../server');
-const { Parties } = require('../route/route');
 
 chai.use(chaiHttp);
 
@@ -39,9 +40,9 @@ describe('GET /parties', () => {
   it('should GET all the parties', (done) => {
     chai.request(app)
       .get('/v1/parties')
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        expect(res.body.Data).to.have.lengthOf(2);
+      .end((err, { status, body }) => {
+        expect(status).to.equal(200);
+        expect(body.Data).to.have.lengthOf(2);
         done();
       });
   });
@@ -50,10 +51,10 @@ describe('GET /parties', () => {
     chai
       .request(app)
       .get('/v1/parties')
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        expect(res.body.status).to.equal(404);
-        expect(res.body.message).to.equal('There is no data at the moment');
+      .end((err, { status, body }) => {
+        expect(status).to.equal(200);
+        expect(body.status).to.equal(404);
+        expect(body.message).to.equal('There is no data at the moment');
         done();
       });
   });
