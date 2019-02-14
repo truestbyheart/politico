@@ -1,5 +1,5 @@
 import {
-  ifExist, increment, partyEntityValidator, partyPropertySpecs,
+  ifExist, increment, partyEntityValidator, partyPropertySpecs, isMissingValue,
 } from '../helper/helper';
 
 export const Parties = [];
@@ -75,11 +75,21 @@ export const editParty = (req, res) => {
       message: 'There is no party with the specified ID',
     });
   } else {
-    res.json({
-      status: 200,
-      message: 'The data has been succefully edited',
-      Data: editedParty,
-    });
+    const response = isMissingValue(req.body);
+
+    if (ifExist(req.body, Parties)) {
+      res.status(200).json({ status: 200, message: 'The party already exists or your logo Url exists :-)' });
+    } else if (!response) {
+      res.json({
+        status: 200,
+        message: 'The data has been succefully edited',
+        Data: editedParty,
+      });
+    } else {
+      res.json({
+        status: 200,
+        Data: response,
+      });
+    }
   }
 };
-

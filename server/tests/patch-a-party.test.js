@@ -60,4 +60,62 @@ describe('PATCH /parties/:id', () => {
         done();
       });
   });
+
+  it('should not accept empty values', (done) => {
+    Parties.length = 0;
+
+    const party = {
+      name: 'civic union front',
+      hqAddress: 'p.o bo 1234, dar-es-salaam',
+      logoUrl: '/img/cuf.png',
+    };
+    chai.request(app)
+      .post('/v1/parties')
+      .send(party)
+      .end();
+
+
+    const partyPatch = {
+      name: '',
+      hqAddress: 'p.o bo 12, singida',
+      logoUrl: '/img/c.png',
+    };
+    chai.request(app)
+      .patch('/v1/parties/1')
+      .send(partyPatch)
+      .end((err, { status, body }) => {
+        expect(status).to.equal(200);
+        expect(body.status).to.equal(200);
+        expect(body.Data).eql('name is empty, created but not stored');
+        done();
+      });
+  });
+  it('should not duplicate the same edit', (done) => {
+    Parties.length = 0;
+
+    const party = {
+      name: 'civic union front',
+      hqAddress: 'p.o bo 1234, dar-es-salaam',
+      logoUrl: '/img/cuf.png',
+    };
+    chai.request(app)
+      .post('/v1/parties')
+      .send(party)
+      .end();
+
+    const partyPatch = {
+      name: 'civic union front',
+      hqAddress: 'p.o bo 1234, dar-es-salaam',
+      logoUrl: '/img/cuf.png',
+    };
+    chai.request(app)
+      .patch('/v1/parties/1')
+      .send(partyPatch)
+      .end((err, { status, body }) => {
+        expect(status).to.equal(200);
+        expect(body.status).to.equal(200);
+        expect(body.message).eql('The party already exists or your logo Url exists :-)');
+        done();
+      });
+  });
 });

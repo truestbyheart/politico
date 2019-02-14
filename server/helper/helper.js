@@ -9,7 +9,7 @@ export const ifExist = ({ name, logoUrl }, array) => {
   }
 };
 
-const isMissingValue = (body) => {
+export const isMissingValue = (body) => {
   const arrayOfWords = Object.values(body);
   const property = Object.keys(body);
   const missings = [];
