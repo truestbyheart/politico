@@ -1,33 +1,40 @@
-const { ifExist, increment, partyEntityValidator } = require('./../helper/helper');
+import {
+  ifExist, increment, partyEntityValidator, partyPropertySpecs,
+} from '../helper/helper';
 
-const Parties = [];
+export const Parties = [];
 
 
-const defaultRoute = (req, res) => {
+export const defaultRoute = (req, res) => {
   res.status(200).json({
     status: 200,
     message: 'welcome to politico API, please used the specified endpoints from the readme file',
   });
 };
 
-const postParty = (req, res) => {
-  if (partyEntityValidator(req.body)) {
-    if (ifExist(req.body, Parties)) {
+export const postParty = ({ body }, res) => {
+  if (partyEntityValidator(body)) {
+    if (ifExist(body, Parties)) {
       res.status(200).json({ status: 200, message: 'The party already exists or your logo Url exists :-)' });
     } else {
-      increment(req.body, Parties);
-      res.status(201).json({ status: 201, Data: Parties });
+      const response = increment(body, Parties);
+      if (response === undefined) {
+        res.status(201).json({ status: 201, Data: Parties });
+      } else {
+        res.status(201).json({ status: 201, Data: response });
+      }
     }
   } else {
+    const missings = partyPropertySpecs(body);
     res.status(200).json({
       status: 200,
-      message: 'Please make sure all properties are filled',
-      note: 'The data should be case sensitive to the entity specs',
+      message: missings,
     });
   }
 };
 
-const getParties = (req, res) => {
+
+export const getParties = (req, res) => {
   if (Parties.length === 0) {
     res.json({
       status: 404,
@@ -40,9 +47,7 @@ const getParties = (req, res) => {
     });
   }
 };
-
-const getParty = (req, res) => {
-  const { id } = req.params.id;
+export const getParty = (req, res) => {
   if (Parties.length === 0) {
     res.json({
       status: 404,
@@ -51,14 +56,7 @@ const getParty = (req, res) => {
   } else {
     res.json({
       status: 200,
-      Data: Parties[id - 1],
+      Data: Parties[req.params.id - 1],
     });
   }
-};
-module.exports = {
-  defaultRoute,
-  postParty,
-  getParties,
-  Parties,
-  getParty,
 };

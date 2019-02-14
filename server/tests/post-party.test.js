@@ -1,19 +1,23 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-undef */
-const chai = require('chai');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import { app } from '../server';
+import { Parties } from '../route/route';
 
-const chaiHttp = require('chai-http');
 chai.use(require('chai-like'));
 chai.use(require('chai-things'));
 
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line nso-unused-vars
 const should = chai.should();
-const { app } = require('../server.js');
+
 
 chai.use(chaiHttp);
 
 describe('POST /parties', () => {
   it('Should add a new party ', (done) => {
+    Parties.length = 0;
     const party = {
       name: 'chama cha mapinduzi',
       hqAddress: 'p.o bo 1234, dar-es-salaam',
@@ -31,6 +35,7 @@ describe('POST /parties', () => {
       });
   });
   it('Should auto increment by 1', (done) => {
+    Parties.length = 0;
     const party = {
       name: 'civic union front',
       hqAddress: 'p.o bo 1234, dar-es-salaam',
@@ -46,37 +51,37 @@ describe('POST /parties', () => {
       .request(app)
       .post('/v1/parties')
       .send(party)
-      .end((err, res) => {
-        res.body.should.have.status(201);
-        res.body.should.be.a('object');
-        res.body.should.have.property('Data').be.an('array').that.contains.something.like({ id: 2 });
+      .end((err, { body }) => {
+        body.should.have.status(201);
+        body.should.be.a('object');
+        body.should.have.property('Data').be.an('array').that.contains.something.like({ id: 1 });
       });
     chai
       .request(app)
       .post('/v1/parties')
       .send(party2)
-      .end((err, res) => {
-        res.body.should.have.status(201);
-        res.body.should.be.a('object');
-        res.body.should.have.property('Data').be.an('array').that.contains.something.like({ id: 3 });
+      .end((err, { body }) => {
+        body.should.have.status(201);
+        body.should.be.a('object');
+        body.should.have.property('Data').be.an('array').that.contains.something.like({ id: 2 });
         done();
       });
   });
   it('Should not duplicate party', (done) => {
     const party = {
-      name: 'chama cha mapinduzi',
+      name: 'civic union front',
       hqAddress: 'p.o bo 1234, dar-es-salaam',
-      logoUrl: '/img/ccm.png',
+      logoUrl: '/img/cuf.png',
     };
 
     chai
       .request(app)
       .post('/v1/parties')
       .send(party)
-      .end((err, res) => {
-        res.body.should.have.status(200);
-        res.body.should.be.a('object');
-        res.body.should.have
+      .end((err, { body }) => {
+        body.should.have.status(200);
+        body.should.be.a('object');
+        body.should.have
           .property('message')
           .eql('The party already exists or your logo Url exists :-)');
         done();
@@ -84,6 +89,7 @@ describe('POST /parties', () => {
   });
 
   it('should not receive data against its entity specs', (done) => {
+    Parties.length = 0;
     const party = {
       name: 'chama cha mapinduzi',
       hqAddress: 'p.o bo 1234, dar-es-salaam',
@@ -92,32 +98,49 @@ describe('POST /parties', () => {
       .request(app)
       .post('/v1/parties')
       .send(party)
-      .end((err, res) => {
-        res.body.should.have.status(200);
-        res.body.should.be.a('object');
-        res.body.should.have
+      .end((err, { body }) => {
+        body.should.have.status(200);
+        body.should.be.a('object');
+        body.should.have
           .property('message')
-          .eql('Please make sure all properties are filled');
+          .eql('The object  has the properties name,hqAddress instead of having name,hqAddress,logoUrl');
         done();
       });
   });
 
-  it('should be case sensitive', (done) => {
+  it('should not allow empty value', (done) => {
+    Parties.length = 0;
     const party = {
-      name: 'chama cha mapinduzi',
-      hqaddress: 'p.o bo 1234, dar-es-salaam',
-      logoUrl: '/img/ccm.png',
+      name: '',
+      hqAddress: 'p.o bo 1234, dar-es-salaam',
+      logoUrl: '/ccm.png',
     };
     chai
       .request(app)
       .post('/v1/parties')
       .send(party)
-      .end((err, res) => {
-        res.body.should.have.status(200);
-        res.body.should.be.a('object');
-        res.body.should.have
-          .property('note')
-          .eql('The data should be case sensitive to the entity specs');
+      .end((err, { body }) => {
+        body.should.have.status(201);
+        body.should.be.a('object');
+        body.should.have.property('Data').eql('name is empty, created but not stored');
+        done();
+      });
+  });
+  it('should not allow empty values', (done) => {
+    Parties.length = 0;
+    const party = {
+      name: '',
+      hqAddress: 'p.o bo 1234, dar-es-salaam',
+      logoUrl: '',
+    };
+    chai
+      .request(app)
+      .post('/v1/parties')
+      .send(party)
+      .end((err, { body }) => {
+        body.should.have.status(201);
+        body.should.be.a('object');
+        body.should.have.property('Data').eql('name,logoUrl are empty, created but not stored');
         done();
       });
   });
