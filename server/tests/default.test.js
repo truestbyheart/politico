@@ -1,12 +1,13 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-undef */
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const chaiLike = require('chai-like');
-const chaiThings = require('chai-things');
+import chai from 'chai';
+
+import chaiHttp from 'chai-http';
+import chaiLike from 'chai-like';
+import chaiThings from 'chai-things';
+import { app } from '../server';
 
 const expect = chai.expect;
-const { app } = require('../server.js');
 
 chai.use(chaiLike);
 chai.use(chaiThings);
@@ -17,9 +18,9 @@ describe('GET /', () => {
     chai.request(app)
       .get('/')
       .send()
-      .end((err, res) => {
-        expect(res.status).to.eql(200);
-        expect(res.body).to.have.property('message').eql('welcome to politico API, please used the specified endpoints from the readme file');
+      .end((err, { status, body }) => {
+        expect(status).to.eql(200);
+        expect(body).to.have.property('message').eql('welcome to politico API, please used the specified endpoints from the readme file');
         done();
       });
   });
