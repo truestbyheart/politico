@@ -122,28 +122,26 @@ describe('POST /parties', () => {
       .end((err, { body }) => {
         body.should.have.status(201);
         body.should.be.a('object');
-        body.should.have.property('Data').be.an('array').that.contains.something.like('name is empty, created but not stored');
+        body.should.have.property('Data').eql('name is empty, created but not stored');
         done();
       });
   });
-});
-
-
-it('should not allow empty values', (done) => {
-  Parties.length = 0;
-  const party = {
-    name: '',
-    hqAddress: 'p.o bo 1234, dar-es-salaam',
-    logoUrl: '',
-  };
-  chai
-    .request(app)
-    .post('/v1/parties')
-    .send(party)
-    .end((err, { body }) => {
-      body.should.have.status(201);
-      body.should.be.a('object');
-      body.should.have.property('Data').be.an('array').that.contains.something.like('name,logoUrl are empty, created but not stored');
-      done();
-    });
+  it('should not allow empty values', (done) => {
+    Parties.length = 0;
+    const party = {
+      name: '',
+      hqAddress: 'p.o bo 1234, dar-es-salaam',
+      logoUrl: '',
+    };
+    chai
+      .request(app)
+      .post('/v1/parties')
+      .send(party)
+      .end((err, { body }) => {
+        body.should.have.status(201);
+        body.should.be.a('object');
+        body.should.have.property('Data').eql('name,logoUrl are empty, created but not stored');
+        done();
+      });
+  });
 });
