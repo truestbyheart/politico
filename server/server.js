@@ -1,11 +1,12 @@
-const { app, PORT } = require('./config/config');
-const {
-  defaultRoute,
-  postParty,
-  getParties,
-  getParty,
-  editParty,
-} = require('./route/route');
+import express from 'express';
+import bodyParser from 'body-parser';
+import {
+  defaultRoute, postParty, getParties, getParty, editParty,
+} from './route/route';
+
+export const app = express();
+export const PORT = process.env.PORT || 3200;
+app.use(bodyParser.json());
 
 
 app.route('/')
@@ -25,4 +26,4 @@ app
 app.listen(PORT);
 
 
-module.exports = { app };
+export default app;
