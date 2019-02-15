@@ -1,6 +1,7 @@
 export const ifExist = ({ name, logoUrl }, array) => {
   if (array.length >= 0) {
     for (let i = 0; i < array.length; i++) {
+
       if (name === array[i].name || logoUrl === array[i].logoUrl) {
         return true;
       }
@@ -71,4 +72,5 @@ export const partyPropertySpecs = (body) => {
   }));
 
   return `The object  has the properties ${contains} instead of having ${property}`;
+
 };

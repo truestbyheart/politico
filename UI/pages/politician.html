@@ -11,9 +11,10 @@
 
 <body>
     <header class="politician-header">
-        <div class="header-logo">
-            <a href="./index.html"> <span>P</span>olitico </a>
-        </div>
+        <div class="center-content">
+        <a href="javascript:void(0)" class="tab-menu" onclick="sidebar()">
+            <img src="./../img/icons/tabmenu-icon.svg" alt="tab-image" class="tab-menu__icon" />
+        </a>
         <nav>
             <ul>
                 <li>
@@ -24,13 +25,26 @@
                 </li>
             </ul>
         </nav>
-    </header>
-
-    <main class="politician-page">
-        <div class="sidebar">
-            <a href="javascript:void(0)" class="sidebar-list__item" onclick="admintab('office')">office</a>
         </div>
-        <div class="politician-content">
+
+    </header>
+<div class="sidebar slim" id="sidebar">
+    <a href="javascript:void(0)" class="close-sidebar" onclick="close_sidebar()">
+        <img src="./../img/icons/close-flat.svg" class="icon" alt="close" />
+    </a>
+    <div class="sidebar-logo">
+        <a href="./../index.html"> <span>P</span>olitico </a>
+    </div>
+    <div class="tabular-menu">
+        <a href="#party" class="sidebar-list__item">offices</a>
+        <a href="./user-home.html" class="sidebar-list__item">user</a>
+        <a href="./politician.html" class="sidebar-list__item">politician</a>
+        <a href="./admin.html" class="sidebar-list__item">admin</a>
+    </div>
+</div>
+    <main class="politician-page">
+        
+        <div class="politician-content center-content">
             <section class="office show" id="sect-2">
                 <table class="tabled-data">
                     <tr>
@@ -47,6 +61,24 @@
 
                     <tr>
                         <td>District executive officer</td>
+                        <td>
+                            <a href="javascript:void(0)" class="btn btn-agree" onclick="yesClick(this)">interested</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>District executive officer</td>
+                        <td>
+                            <a href="javascript:void(0)" class="btn btn-agree" onclick="yesClick(this)">interested</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>District executive officer</td>
+                        <td>
+                            <a href="javascript:void(0)" class="btn btn-agree" onclick="yesClick(this)">interested</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> District executive officer</td>
                         <td>
                             <a href="javascript:void(0)" class="btn btn-agree" onclick="yesClick(this)">interested</a>
                         </td>

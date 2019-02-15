@@ -1,73 +1,104 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Politico</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" type="text/css" href="./../css/style.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="admin-header">
-        <div class="header-logo">
-            <a href="./index.html"> <span>P</span>olitico </a>
-        </div>
+      <div class="center-content">
+        <a href="javascript:void(0)" class="tab-menu" onclick="sidebar()">
+          <img
+            src="./../img/icons/tabmenu-icon.svg"
+            alt="tab-image"
+            class="tab-menu__icon"
+          />
+        </a>
         <nav>
-            <ul>
-                <li>
-                    <div class="profile">
-                        <img src="./../img/icons/user.svg" alt="user-profile" class="profile__pic" />
-                        <a href="user-profile.html" class="profile__name profile__link">name</a>
-                    </div>
-                </li>
-            </ul>
+          <ul>
+            <li>
+            <div class="profile">
+              <img src="./../img/icons/user.svg" alt="user-profile" class="profile__pic" />
+              <p class="profile__name"><a href="./user-profile.html" class="pro-link">daniel</a></p>
+            </div>
+            </li>
+          </ul>
         </nav>
+      </div>
     </header>
 
-    <main class="admin-page">
-        <div class="sidebar">
-            <a href="user-home.html" class="sidebar-list__item">home</a>
-        </div>
-        <div class="admin-content">
-            <section class="office" id="sect-2">
-                <div class="office-title">
-                    <table class="tabled-data">
-                        <thead>
-                            <tr>
-                                <th>candidate</th>
-                                <th>party</th>
-                                <th>office</th>
-                                <th>stats</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>john m. ruhura</td>
-                                <td>CCM</td>
-                                <td>Member of Parliment</td>
-                                <td><img src="./../img/icons/stats.svg" alt="stats" class="icon"><span class="stat-num">
-                                        0</span></td>
-                            </tr>
-                            <tr>
-                                <td>Angela C. Mmbwana</td>
-                                <td>CHADEMA</td>
-                                <td>District executive officer</td>
-                                <td><img src="./../img/icons/stats.svg" alt="stats" class="icon"><span class="stat-num">
-                                        0</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </section>
-        </div>
+<main class="admin-page">
+<div class="sidebar slim" id="sidebar">
+    <a href="javascript:void(0)" class="close-sidebar" onclick="close_sidebar()">
+        <img src="./../img/icons/close-flat.svg" class="icon" alt="close" />
+    </a>
+    <div class="sidebar-logo">
+        <a href="./../index.html"> <span>P</span>olitico </a>
+    </div>
+    <div class="tabular-menu">
+        <a href="./user-home.html" class="sidebar-list__item" onclick="admintab('party')">home</a>
+        <a href="./user-home.html" class="sidebar-list__item">user</a>
+        <a href="./politician.html" class="sidebar-list__item">politician</a>
+        <a href="./admin.html" class="sidebar-list__item">admin</a>
+    </div>
+</div>
+<div class="user-details center-content">
+  <div class="user-details__name">
+    <p class="name">welcome,daniel</p>
+    <p class="age">Age: 18 years</p>
+  </div>
+</div>
+      <div class="admin-content center-content ">
+        
+        <section class="office" id="sect-2">
+          <div class="office-title">
+            <table class="tabled-data">
+              <thead>
+                <tr>
+                  <th>candidate</th>
+                  <th>party</th>
+                  <th>office</th>
+                  <th>stats</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>john m. ruhura</td>
+                  <td>CCM</td>
+                  <td>Member of Parliment</td>
+                  <td>
+                    <img
+                      src="./../img/icons/stats.svg"
+                      alt="stats"
+                      class="icon"
+                    /><span class="stat-num"> 0</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Angela C. Mmbwana</td>
+                  <td>CHADEMA</td>
+                  <td>District executive officer</td>
+                  <td>
+                    <img
+                      src="./../img/icons/stats.svg"
+                      alt="stats"
+                      class="icon"
+                    /><span class="stat-num"> 0</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
     </main>
     <footer class="admin-footer">
-        &copy; Politico 2019
+      &copy; Politico 2019
     </footer>
     <script src="./../js/app.js"></script>
-</body>
-
+  </body>
 </html>

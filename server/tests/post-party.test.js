@@ -12,7 +12,6 @@ chai.use(require('chai-things'));
 // eslint-disable-next-line nso-unused-vars
 const should = chai.should();
 
-
 chai.use(chaiHttp);
 
 describe('POST /parties', () => {
@@ -51,6 +50,7 @@ describe('POST /parties', () => {
       .request(app)
       .post('/v1/parties')
       .send(party)
+
       .end((err, { body }) => {
         body.should.have.status(201);
         body.should.be.a('object');
@@ -83,7 +83,7 @@ describe('POST /parties', () => {
         body.should.be.a('object');
         body.should.have
           .property('message')
-          .eql('The party already exists or your logo Url exists :-)');
+          .eql('The party already exists');
         done();
       });
   });

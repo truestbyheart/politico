@@ -1,8 +1,10 @@
+
 import {
   ifExist, increment, partyEntityValidator, partyPropertySpecs,
 } from '../helper/helper';
 
 export const Parties = [];
+
 
 
 export const defaultRoute = (req, res) => {
@@ -11,6 +13,7 @@ export const defaultRoute = (req, res) => {
     message: 'welcome to politico API, please used the specified endpoints from the readme file',
   });
 };
+
 
 export const postParty = ({ body }, res) => {
   if (partyEntityValidator(body)) {
