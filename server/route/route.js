@@ -75,13 +75,8 @@ export const getParty = (req, res) => {
 
 export const editParty = (req, res) => {
   const { id } = req.params;
-  const oldData = Parties;
-  const newData = [];
-  const party = req.body;
-  party.id = Number(id);
-  newData.push(party);
-  const editedParty = oldData.map(obj => newData.find(o => o.id === obj.id));
-  if (editedParty[0] === undefined) {
+  const rqParty = Parties.find(o => o.id === Number(id));
+  if (rqParty === undefined) {
     res.json({
       status: 404,
       message: 'There is no party with the specified ID',
@@ -91,10 +86,13 @@ export const editParty = (req, res) => {
     if (ifExist(req.body, Parties)) {
       res.status(200).json({ status: 200, message: 'The party already exists or your logo Url exists :-)' });
     } else if (!response) {
+      if (rqParty.name !== req.body.name) { rqParty.name = req.body.name; }
+      if (rqParty.hqAddress !== req.body.hqAddress) { rqParty.hqAddress = req.body.hqAddress; }
+      if (rqParty.logoUrl !== req.body.logoUrl) { rqParty.logoUrl = req.body.logoUrl; }
       res.json({
         status: 200,
-        message: 'Thedata has been succefully edited',
-        data: editedParty,
+        message: 'The data has been succefully edited',
+        data: req.body,
       });
     } else {
       res.json({
