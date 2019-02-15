@@ -5,7 +5,7 @@
 
 # Getting started 
 first of all the API is hosted on heroku at the link bellow
-(https://politicoapiv1.herokuapp.com/)
+(https://politicoapiv2.herokuapp.com/)
 
 for running the API offline your required to clone it to your machine and make sure you do the following
 
@@ -62,7 +62,7 @@ sample response
 
 3. GET `/v1/parties/:id`
 
- sample url (https://politicoapiv1.herokuapp.com/v1/parties/1)
+ sample url (https://politicoapiv2.herokuapp.com/v1/parties/1)
 
         `{
             "status": 200,
@@ -76,7 +76,7 @@ sample response
 
 3. PATCH  `/v1/parties/:id`
 
-sample url (https://politicoapiv1.herokuapp.com/v1/parties/1)
+sample url (https://politicoapiv2.herokuapp.com/v1/parties/1)
 
         `{
             "status": 200,
@@ -93,7 +93,7 @@ sample url (https://politicoapiv1.herokuapp.com/v1/parties/1)
         }`
 4. DELETE `/v1/parties/:id`
 
-sample url (https://politicoapiv1.herokuapp.com/v1/parties/1)
+sample url (https://politicoapiv2.herokuapp.com/v1/parties/1)
 
         `
         {
