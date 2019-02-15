@@ -26,6 +26,10 @@ body {
   margin: 0 auto;
   color: var(--default-white, #fff);
 }
+.btn {
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
 
 /*
 PAGES STYLE
@@ -514,7 +518,7 @@ BTN AREA
 .btn:hover {
   outline: none;
   transform: translateY(-2px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.7rem 0.6rem rgba(0, 0, 0, 0.2);
 }
 
 .btn:hover::after {
@@ -525,7 +529,8 @@ BTN AREA
 .btn:active,
 .btn:focus {
   transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.5rem 0.4rem rgba(0, 0, 0, 0.2);
+  -webkit-font-smoothing: antialiased;
 }
 
 .btn-login {
@@ -579,7 +584,8 @@ BTN AREA
   background-color: var(--admin-color, #2c3e50);
   width: 35% !important;
   margin-left: 2.4em;
-  color: inherit;
+  color: var(--default-white, #fff) !important;
+  text-align: center;
 }
 
 .btn-agree:link,
@@ -606,6 +612,22 @@ BTN AREA
   background-color: var(--default-white, #fff);
   text-align: center;
   font-size: 1em;
+}
+
+.btn-danger {
+  font-size: 1.7em !important;
+  font-weight: bolder;
+  color: #fff !important;
+  background-color: #1da1f2;
+  border-color: #1da1f2 !important;
+}
+
+.btn-cancel {
+  font-size: 1.7em !important;
+  font-weight: bolder;
+  color: #1da1f2 !important;
+  background-color: transparent !important;
+  margin-top: 2%;
 }
 
 /*
@@ -720,7 +742,7 @@ POPUP AREA
 
 .notify {
   position: absolute;
-  top: 35%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -809,13 +831,19 @@ POPUP modal AREA
   transform: translate(38%, 18%);
 }
 
-.edit-office-modal{
+.edit-office-modal {
   transform: translate(38%, 25%);
 }
 
-.delete-modal{
-   transform: translate(-6%, 25%);
-   text-align: center;
+.delete-modal {
+  transform: translate(-4%, -3%);
+  text-align: center;
+}
+
+.delete-modal p {
+  margin-left: 1.4em;
+  font-size: 2.6em !important;
+  text-align: center;
 }
 
 .pop-exit {
@@ -841,7 +869,7 @@ USER DETAILS AREA
 .user-details {
   border-bottom: 1px solid var(--default-white, #fff);
   width: 46%;
-  margin-left: 19em;
+  margin-left: 20em;
   text-transform: capitalize;
 }
 
