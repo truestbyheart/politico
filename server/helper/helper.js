@@ -57,7 +57,6 @@ export const partyEntityValidator = (body) => {
   }
 };
 
-
 export const partyPropertySpecs = (body) => {
   const arrayOfProperty = Object.keys(body);
   const property = ['name', 'hqAddress', 'logoUrl'];
@@ -71,4 +70,5 @@ export const partyPropertySpecs = (body) => {
   }));
 
   return `The object  has the properties ${contains} instead of having ${property}`;
+
 };

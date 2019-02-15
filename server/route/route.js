@@ -1,8 +1,10 @@
+
 import {
   ifExist, increment, partyEntityValidator, partyPropertySpecs,
 } from '../helper/helper';
 
 export const Parties = [];
+
 
 
 export const defaultRoute = (req, res) => {
@@ -12,10 +14,12 @@ export const defaultRoute = (req, res) => {
   });
 };
 
+
 export const postParty = ({ body }, res) => {
   if (partyEntityValidator(body)) {
     if (ifExist(body, Parties)) {
       res.status(200).json({ status: 200, message: 'The party already exists or your logo Url exists :-)' });
+
     } else {
       const response = increment(body, Parties);
       if (response === undefined) {
@@ -47,3 +51,4 @@ export const getParties = (req, res) => {
     });
   }
 };
+

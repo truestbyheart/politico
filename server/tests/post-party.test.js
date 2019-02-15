@@ -55,15 +55,18 @@ describe('POST /parties', () => {
         body.should.have.status(201);
         body.should.be.a('object');
         body.should.have.property('Data').be.an('array').that.contains.something.like({ id: 1 });
+
       });
     chai
       .request(app)
       .post('/v1/parties')
       .send(party2)
+
       .end((err, { body }) => {
         body.should.have.status(201);
         body.should.be.a('object');
         body.should.have.property('Data').be.an('array').that.contains.something.like({ id: 2 });
+
         done();
       });
   });
@@ -83,7 +86,7 @@ describe('POST /parties', () => {
         body.should.be.a('object');
         body.should.have
           .property('message')
-          .eql('The party already exists or your logo Url exists :-)');
+          .eql('The party already exists');
         done();
       });
   });

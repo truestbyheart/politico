@@ -15,6 +15,24 @@ app
   .post(postParty)
   .get(getParties);
 
+app
+  .route('/v1/parties/:id')
+  .get(getParty)
+  .patch(editParty)
+  .delete(deleteParty);
+
+app
+  .route('/v1/offices')
+  .post(postOffice)
+  .get(getOffices);
+
+app
+  .route('/v1/offices/:id')
+  .get(getOffice)
+  .patch(editOffice)
+  .delete(deleteOffice);
+
+
 app.listen(PORT);
 
 
