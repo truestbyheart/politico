@@ -192,7 +192,7 @@ export const editOffice = (req, res) => {
   const office = req.body;
   office.id = Number(id);
   newData.push(office);
-  const editedOffice = oldData.map(obj => newData.find(o => o.id === obj.id));
+  const editedOffice = oldData.map(obj => newData.find(o => o.id === obj.id) || '' );
   if (editedOffice.length === 0) {
     res.json({
       status: 404,
