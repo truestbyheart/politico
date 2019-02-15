@@ -1,15 +1,16 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-undef */
-const chai = require('chai');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import { app } from '../server';
+import { Offices } from '../route/route';
 
-const chaiHttp = require('chai-http');
 chai.use(require('chai-like'));
 chai.use(require('chai-things'));
 
 // eslint-disable-next-line no-unused-vars
 const should = chai.should();
-const { app } = require('../server');
-const { Offices } = require('./../route/route');
+
 
 chai.use(chaiHttp);
 
@@ -46,11 +47,11 @@ describe('POST /offices', () => {
       .request(app)
       .post('/v1/offices')
       .send(office)
-      .end((err, res) => {
-        res.body.should.have.status(201);
-        res.body.should.be.a('object');
-        res.body.should.have
-          .property('Data')
+      .end((err, { body }) => {
+        body.should.have.status(201);
+        body.should.be.a('object');
+        body.should.have
+          .property('data')
           .be.an('array')
           .that.contains.something.like({ id: 1 });
       });
@@ -58,11 +59,11 @@ describe('POST /offices', () => {
       .request(app)
       .post('/v1/offices')
       .send(office2)
-      .end((err, res) => {
-        res.body.should.have.status(201);
-        res.body.should.be.a('object');
-        res.body.should.have
-          .property('Data')
+      .end((err, { body }) => {
+        body.should.have.status(201);
+        body.should.be.a('object');
+        body.should.have
+          .property('data')
           .be.an('array')
           .that.contains.something.like({ id: 2 });
         done();
@@ -78,10 +79,10 @@ describe('POST /offices', () => {
       .request(app)
       .post('/v1/offices')
       .send(office)
-      .end((err, res) => {
-        res.body.should.have.status(200);
-        res.body.should.be.a('object');
-        res.body.should.have
+      .end((err, { body }) => {
+        body.should.have.status(200);
+        body.should.be.a('object');
+        body.should.have
           .property('message')
           .eql('The office already exists');
         done();
@@ -94,33 +95,50 @@ describe('POST /offices', () => {
     };
     chai
       .request(app)
-      .post('/v1/parties')
+      .post('/v1/offices')
       .send(office)
-      .end((err, res) => {
-        res.body.should.have.status(200);
-        res.body.should.be.a('object');
-        res.body.should.have
+      .end((err, { body }) => {
+        body.should.have.status(200);
+        body.should.be.a('object');
+        body.should.have
           .property('message')
-          .eql('Please make sure all properties are filled');
+          .eql('The object  has the properties name instead of having name,type');
         done();
       });
   });
 
-  it('should be case sensitive', (done) => {
+  it('should not receive empty value', (done) => {
+    Offices.length = 0;
     const office = {
       name: 'Deputy Speaker',
-      Type: 'legislature',
+      type: '',
     };
     chai
       .request(app)
-      .post('/v1/parties')
+      .post('/v1/offices')
       .send(office)
-      .end((err, res) => {
-        res.body.should.have.status(200);
-        res.body.should.be.a('object');
-        res.body.should.have
-          .property('note')
-          .eql('The data should be case sensitive to the entity specs');
+      .end((err, { body }) => {
+        body.should.have.status(200);
+        body.should.be.a('object');
+        body.should.have.property('data').eql('type is empty, created but not stored');
+        done();
+      });
+  });
+
+  it('should not receive empty values', (done) => {
+    Offices.length = 0;
+    const office = {
+      name: '',
+      type: '',
+    };
+    chai
+      .request(app)
+      .post('/v1/offices')
+      .send(office)
+      .end((err, { body }) => {
+        body.should.have.status(200);
+        body.should.be.a('object');
+        body.should.have.property('data').eql('name,type are empty, created but not stored');
         done();
       });
   });

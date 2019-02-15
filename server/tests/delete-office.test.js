@@ -1,15 +1,16 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-undef */
-const chai = require('chai');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import { app } from '../server';
+import { Offices } from '../route/route';
 
-const chaiHttp = require('chai-http');
 chai.use(require('chai-like'));
 chai.use(require('chai-things'));
 
 // eslint-disable-next-line no-unused-vars
 const expect = chai.expect;
-const { app } = require('../server');
-const { Offices } = require('./../route/route');
+
 
 chai.use(chaiHttp);
 
@@ -19,12 +20,12 @@ describe('DELETE /offices/:id', () => {
     chai
       .request(app)
       .delete('/v1/offices/5')
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        expect(res.body)
+      .end((err, { status, body }) => {
+        expect(status).to.equal(200);
+        expect(body)
           .to.have.property('status')
           .eql(404);
-        expect(res.body)
+        expect(body)
           .to.have.property('message')
           .eql('There is no office with the specified ID');
         done();
@@ -45,10 +46,10 @@ describe('DELETE /offices/:id', () => {
     chai
       .request(app)
       .delete('/v1/offices/1')
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        expect(res.body.status).to.equal(200);
-        expect(res.body)
+      .end((err, { status, body }) => {
+        expect(status).to.equal(200);
+        expect(body.status).to.equal(200);
+        expect(body)
           .to.have.property('message')
           .eql('The office has been deleted successfully');
         done();

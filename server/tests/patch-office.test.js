@@ -1,15 +1,16 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-undef */
-const chai = require('chai');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import { app } from '../server';
+import { Offices } from './../route/route';
 
-const chaiHttp = require('chai-http');
 chai.use(require('chai-like'));
 chai.use(require('chai-things'));
 
 // eslint-disable-next-line no-unused-vars
 const expect = chai.expect;
-const { app } = require('../server');
-const { Offices } = require('./../route/route');
+
 
 chai.use(chaiHttp);
 describe('PATCH /offices/:id', () => {
@@ -24,12 +25,12 @@ describe('PATCH /offices/:id', () => {
       .request(app)
       .patch('/v1/offices/5')
       .send(office)
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        expect(res.body)
+      .end((err, { status, body }) => {
+        expect(status).to.equal(200);
+        expect(body)
           .to.have.property('status')
           .eql(404);
-        expect(res.body)
+        expect(body)
           .to.have.property('message')
           .eql('There is no office with the specified ID');
         done();
@@ -55,12 +56,29 @@ describe('PATCH /offices/:id', () => {
       .request(app)
       .patch('/v1/offices/1')
       .send(office)
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        expect(res.body.status).to.equal(200);
-        expect(res.body.Data)
+      .end((err, { status, body }) => {
+        expect(status).to.equal(200);
+        expect(body.status).to.equal(200);
+        expect(body.data)
           .to.be.an('array')
           .that.contains.something.like({ name: 'dmo' });
+        done();
+      });
+  });
+  it('should not accept empty values', (done) => {
+    const officeTestData = {
+      name: 'opd',
+      type: '',
+    };
+
+    chai
+      .request(app)
+      .patch('/v1/offices/1')
+      .send(officeTestData)
+      .end((err, { status, body }) => {
+        expect(status).to.equal(200);
+        expect(body.status).to.equal(200);
+        expect(body.data).eql('type is empty, created but not stored');
         done();
       });
   });
