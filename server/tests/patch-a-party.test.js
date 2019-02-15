@@ -56,7 +56,7 @@ describe('PATCH /parties/:id', () => {
       .end((err, { status, body }) => {
         expect(status).to.equal(200);
         expect(body.status).to.equal(200);
-        expect(body.data).to.be.an('array').that.contains.something.like({ name: 'chama' });
+        expect(body.data).to.be.an('object').have.property('name').eql('chama');
         done();
       });
   });
