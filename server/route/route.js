@@ -86,9 +86,9 @@ export const editParty = (req, res) => {
     if (ifExist(req.body, Parties)) {
       res.status(200).json({ status: 200, message: 'The party already exists or your logo Url exists :-)' });
     } else if (!response) {
-      if (rqParty.name !== req.body.name) { rqParty.name = req.body.name; }
-      if (rqParty.hqAddress !== req.body.hqAddress) { rqParty.hqAddress = req.body.hqAddress; }
-      if (rqParty.logoUrl !== req.body.logoUrl) { rqParty.logoUrl = req.body.logoUrl; }
+      if (req.body.name) { rqParty.name = req.body.name; }
+      if (req.body.hqAddress) { rqParty.hqAddress = req.body.hqAddress; }
+      if (req.body.logoUrl) { rqParty.logoUrl = req.body.logoUrl; }
       res.json({
         status: 200,
         message: 'The data has been succefully edited',
