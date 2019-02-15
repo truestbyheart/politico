@@ -185,26 +185,24 @@ export const getOffice = (req, res) => {
 
 export const editOffice = (req, res) => {
   const { id } = req.params;
-  const oldData = Offices;
-  const newData = [];
-  const office = req.body;
-  office.id = Number(id);
-  newData.push(office);
-  const editedOffice = oldData.map(obj => newData.find(o => o.id === obj.id));
-  if (editedOffice.length === 0) {
+  const rqOffice = Offices.find(o => o.id === Number(id));
+  if (rqOffice === undefined) {
     res.json({
       status: 404,
       message: 'There is no office with the specified ID',
     });
   } else {
     const response = isMissingValue(req.body);
-    if (ifOfficeExist(req.body, Parties)) {
+    if (ifOfficeExist(req.body, Offices)) {
       res.status(200).json({ status: 200, message: 'The office already exists' });
     } else if (!response) {
+      if (req.body.name) { rqOffice.name = req.body.name; }
+      if (req.body.type) { rqOffice.type = req.body.type; }
+
       res.json({
         status: 200,
         message: 'The data has been succefully edited',
-        data: editedOffice,
+        data: req.body,
       });
     } else {
       res.json({

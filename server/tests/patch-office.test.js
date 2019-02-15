@@ -3,7 +3,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import { app } from '../server';
-import { Offices } from './../route/route';
+import { Offices } from '../route/route';
 
 chai.use(require('chai-like'));
 chai.use(require('chai-things'));
@@ -60,8 +60,7 @@ describe('PATCH /offices/:id', () => {
         expect(status).to.equal(200);
         expect(body.status).to.equal(200);
         expect(body.data)
-          .to.be.an('array')
-          .that.contains.something.like({ name: 'dmo' });
+          .to.be.an('object').have.property('name').eql('dmo');
         done();
       });
   });
