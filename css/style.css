@@ -741,10 +741,8 @@ POPUP AREA
 }
 
 .notify {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+width: 85%;
+transform: translate(20%,95%);
 }
 
 .success,
