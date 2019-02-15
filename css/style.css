@@ -868,8 +868,8 @@ USER DETAILS AREA
 */
 .user-details {
   border-bottom: 1px solid var(--default-white, #fff);
-  width: 46%;
-  margin-left: 20em;
+  width: 85%;
+  margin-left: 1%;
   text-transform: capitalize;
 }
 
@@ -877,7 +877,7 @@ USER DETAILS AREA
   display: inline-block;
 }
 .age {
-  margin-left: 52%;
+  margin-left: 66%;
 }
 
 .name {
