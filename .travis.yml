@@ -1,20 +1,19 @@
 # single test suite, non-parallel build.
-env:
-  global:
-    - code_climate
 language: node_js
 node_js:
   - 10
   - 9
   - node
+cache:
+  directories:
+    - "node_modules"
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
-cache:
-  - node_modules
 script:
   - npm run test
 after_script:
+    - npm run coverage
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-  - npm run coverage
+
