@@ -3,6 +3,12 @@ node_js:
   - 10
   - 9
   - node
+addons:
+  code_climate:
+      repo_token:
+        secure: k2u+0Xh+FAnZ1u6wVF8MkHEoDX03kwkuH3rSb5ecdYb1YPLsJDMB1arUFhAVXcVTeerzUR7JwFMf32BFPCAmt97vcAplBxqxMVN/dQzox90VcRs8HE3EZlAGIprZcOypnH4JciDHbCYUGjglGLTeuNXzR5i0kVZxkWog1YYk9QGz4v8jCLQzTjQzGRR9wupRCa4husEVDDRGhaxDUn5BIxP3l7O9pN3Zb8rni1289M1StSiHahWZqhRN3+j6h31Yc6BgW9iR+kjpMFpbFlRKtPCiQtwaHMCHwWEvS6I2rOAsPArW8ipZ1RgB6wOD0rz0OvPDdN8v69VPMNZ6lXso1AcvX9ClcnyeZM6jBpGthNMwa4iPek6lg1T9G64yUsB6iVKqtZjiEqpQJ09vI4v5mft5IKZLcc7fTTcca4m0ds9eKdSK7K8drlH6mlsww1Kknx1IGi6/95rlR/2HgQsow70fq8Fwb/sC81ZpluDKy6q+CwRhBl9pJtqWRMWlepOVqprEWfI4qSPynZkKun6im855DuM81mreibw8ANLm+kqxjSlf3vzU2g/304JxS16LsexAmHwslrn48fyhHhAy3MmZdL/z+TXeqmBS3P9BaBcgtUzKeXu6Lxus889WHqEQ9ZdUC/k1e9V/bf1M73QM3nIJE+lne+mw9kxr2znEw1o=
 cache:
-  -node_modules
+  - node_modules
+script:
+  - npm run test
 after_success: npm run coverage
