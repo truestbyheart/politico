@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import bodyParser from 'body-parser';
 import {
@@ -13,6 +14,9 @@ import {
   editOffice,
   deleteOffice,
 } from './route/route';
+
+
+dotenv.config();
 
 
 export const app = express();

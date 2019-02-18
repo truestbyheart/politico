@@ -8,6 +8,7 @@ import {
   officePropertySpecs,
   ifOfficeExist,
 } from '../helper/helper';
+import pool from '../model/connection';
 
 // eslint-disable-next-line import/no-mutable-exports
 export let Parties = [];
@@ -15,9 +16,14 @@ export let Parties = [];
 export let Offices = [];
 
 export const defaultRoute = (req, res) => {
-  res.status(200).json({
-    status: 200,
-    message: 'welcome to politico API, please used the specified endpoints from the readme file',
+  pool.query('SELECT * FROM defMessage', (error, results) => {
+    if (error) {
+      throw error;
+    }
+    res.status(200).json({
+      status: 200,
+      message: results.rows,
+    });
   });
 };
 
