@@ -1,7 +1,4 @@
 # single test suite, non-parallel build.
-env:
- global:
-  -CC_TEST_REPORTER_ID = a9115b11d22b559332a2c2e59305a0b57e711e2236f758fd2e9c8f2f27b8173f
 language: node_js
 node_js:
   - 10
