@@ -3,3 +3,6 @@ coverage
 package-lock.json
 .nyc_output
 develop
+.env.development
+.env.test
+frequents

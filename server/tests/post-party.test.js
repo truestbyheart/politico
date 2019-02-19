@@ -4,7 +4,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import { app } from '../server';
-import { Parties } from '../route/route';
+import { Parties } from '../controller/parties';
 
 chai.use(require('chai-like'));
 chai.use(require('chai-things'));

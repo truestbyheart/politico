@@ -3,7 +3,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import { app } from '../server';
-import { Offices } from '../route/route';
+import { Offices } from '../controller/office';
 
 chai.use(require('chai-like'));
 chai.use(require('chai-things'));
