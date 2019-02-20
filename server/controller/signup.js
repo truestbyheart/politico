@@ -24,25 +24,20 @@ const singUp = ({ body }, res) => {
                 $1,$2,$3,$4,$5,$6,$7
             )`;
                 pool.query(insertFresh,
-                  [firstname, lastname, othername, password, email, phonenumber, passporturl])
+                  [firstname, lastname, othername, hash, email, phonenumber, passporturl])
                   .then((results) => {
                     if (results.rowCount === 1) {
-                      const getit = 'SELECT * FROM users WHERE email=$1';
-                      pool.query(getit, [email])
-                        .then((results) => {
-                          if (results.rowCount === 1) {
-                            res.status(200).json({
-                              status: 200,
-                              data: results.rows,
-                            });
-                          } else {
-                            res.status(200).json({
-                              status: 200,
-                              data: 'Account was not created, please try again later',
-                            });
-                          }
-                        })
-                        .catch((e) => { throw e; });
+                      if (results.rowCount === 1) {
+                        res.status(200).json({
+                          status: 200,
+                          message: 'Account successfully created',
+                        });
+                      } else {
+                        res.status(200).json({
+                          status: 200,
+                          message: 'Account was not created, please try again later',
+                        });
+                      }
                     } else {
                       res.status(500).json({
                         status: 500,
