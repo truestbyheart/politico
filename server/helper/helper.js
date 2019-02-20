@@ -51,3 +51,24 @@ export const partyPropertySpecs = (body) => {
 
   return `Please make sure to include ${missing}`;
 };
+
+export const officeEntityValidator = (body) => {
+  if (
+    body.hasOwnProperty('name')
+    && body.hasOwnProperty('type')
+  ) {
+    return true;
+  }
+};
+
+export const officePropertySpecs = (body) => {
+  const missing = [];
+  if (!body.hasOwnProperty('name')) {
+    missing.push('name');
+  }
+  if (!body.hasOwnProperty('type')) {
+    missing.push('type');
+  }
+
+  return `Please make sure to include ${missing}`;
+};
