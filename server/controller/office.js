@@ -1,30 +1,47 @@
 import {
-  increment,
   isMissingValue,
   officeEntityValidator,
   officePropertySpecs,
-  ifOfficeExist,
 } from '../helper/helper';
+import pool from '../model/connection';
 
-// eslint-disable-next-line import/no-mutable-exports
-export let Offices = [];
 
 export const postOffice = ({ body }, res) => {
   if (officeEntityValidator(body)) {
-    if (ifOfficeExist(body, Offices)) {
-      res
-        .status(200)
-        .json({
-          status: 200,
-          message: 'The office already exists',
-        });
+    // check for empty values
+    const response = isMissingValue(body);
+    if (!response) {
+      // check for duplication
+      const query = 'SELECT * FROM offices WHERE name=$1';
+
+      pool.query(query, [body.name])
+        .then((results) => {
+          if (results.rowCount > 0) {
+            res.status(200).json({ status: 200, message: 'The office already exists' });
+          } else {
+            // insert new data
+            const insQuery = 'INSERT INTO offices(name,type) VALUES($1,$2)';
+            pool.query(insQuery, [body.name, body.type])
+              // eslint-disable-next-line no-unused-vars
+              .then((results) => {
+                if (results.rowCount === 1) {
+                  res.status(201).json({
+                    status: 201,
+                    message: 'office created successfully',
+                  });
+                }
+              })
+              .catch((e) => {
+                throw e;
+              });
+          }
+        })
+        .catch((e) => { throw e; });
     } else {
-      const response = increment(body, Offices);
-      if (response === undefined) {
-        res.status(201).json({ status: 201, data: Offices });
-      } else {
-        res.status(200).json({ status: 200, data: response });
-      }
+      res.status(200).json({
+        status: 200,
+        message: response,
+      });
     }
   } else {
     const missings = officePropertySpecs(body);
@@ -36,84 +53,113 @@ export const postOffice = ({ body }, res) => {
 };
 
 export const getOffices = (req, res) => {
-  if (Offices.length === 0) {
-    res.json({
-      status: 404,
-      message: 'There is no data at the moment',
+  const getQuery = 'SELECT * FROM offices';
+
+  pool.query(getQuery)
+    .then((results) => {
+      if (results.rowCount === 0) {
+        res.status(404).json({
+          status: 404,
+          message: 'There are no offices at the moment',
+        });
+      } else {
+        res.status(200).json({
+          status: 200,
+          data: results.rows,
+        });
+      }
+    })
+    .catch((e) => {
+      throw e;
     });
-  } else {
-    res.json({
-      status: 200,
-      data: Offices,
-    });
-  }
 };
 
 export const getOffice = (req, res) => {
+  const getQuery = 'SELECT * FROM offices WHERE id=$1';
   const { id } = req.params;
-  if (Offices[id - 1] === undefined) {
-    res.json({
-      status: 404,
-      message: 'There is no office with the specified ID',
+
+  pool.query(getQuery, [id])
+    .then((results) => {
+      if (results.rowCount === 0) {
+        res.status(404).json({
+          status: 404,
+          message: 'There is no office with the specified ID',
+        });
+      } else {
+        res.status(200).json({
+          status: 200,
+          data: results.rows,
+        });
+      }
     });
-  } else {
-    res.json({
-      status: 200,
-      Data: Offices[id - 1],
-    });
-  }
 };
 
 export const editOffice = (req, res) => {
   const { id } = req.params;
-  const rqOffice = Offices.find(o => o.id === Number(id));
-  if (rqOffice === undefined) {
-    res.json({
-      status: 404,
-      message: 'There is no office with the specified ID',
-    });
+  const editQuery = 'UPDATE offices SET name=$1, type=$2 WHERE id=$3';
+  const {
+    name, type,
+  } = req.body;
+  // check for empty values
+  const response = isMissingValue(req.body);
+  if (!response) {
+    // check for duplicates
+    const findDuplacate = 'SELECT * FROM offices WHERE name =$1';
+    pool.query(findDuplacate, [name])
+      .then((results) => {
+        if (results.rowCount === 0) {
+          // insert the new data
+          pool.query(editQuery, [name, type, id])
+            .then((results) => {
+              if (results === 0) {
+                res.status(200).json({
+                  status: 200,
+                  message: 'There is no office with the specified ID',
+                });
+              } else {
+                const getQuery = 'SELECT * FROM offices WHERE id=$1';
+                pool.query(getQuery, [id])
+                  .then((results) => {
+                    res.status(200).json({
+                      status: 200,
+                      data: results.rows,
+                    });
+                  });
+              }
+            })
+            .catch((e) => { throw e; });
+        } else {
+          res.status(200).json({
+            status: 200,
+            message: 'The office already exists',
+          });
+        }
+      });
   } else {
-    const response = isMissingValue(req.body);
-    if (ifOfficeExist(req.body, Offices)) {
-      res.status(200).json({ status: 200, message: 'The office already exists' });
-    } else if (!response) {
-      if (req.body.name) { rqOffice.name = req.body.name; }
-      if (req.body.type) { rqOffice.type = req.body.type; }
-
-      res.json({
-        status: 200,
-        message: 'The data has been succefully edited',
-        data: req.body,
-      });
-    } else {
-      res.json({
-        status: 200,
-        data: response,
-      });
-    }
+    res.status(200).json({
+      status: 200,
+      message: response,
+    });
   }
 };
+
+
 export const deleteOffice = (req, res) => {
   const { id } = req.params;
-  if (Offices[id - 1] === undefined) {
-    res.json({
-      status: 404,
-      message: 'There is no office with the specified ID',
-    });
-  } else {
-    const newData = [];
-    delete Offices[req.params.id - 1];
-    for (let i = 0; i < Offices.length; i++) {
-      if (Offices[i] !== undefined) {
-        newData.push(Offices[i]);
-      }
-    }
+  const deleteQuery = 'DELETE FROM offices WHERE id=$1';
 
-    Offices.length = 0;
-    Offices = newData;
-    res.json({
-      status: 200,
-      message: 'The office has been deleted successfully',
+  pool.query(deleteQuery, [id])
+    .then((results) => {
+      if (results.rowCount === 0) {
+        res.status(404).json({
+          status: 404,
+          message: 'There is no office with the specified ID',
+        });
+      } else {
+        res.status(200).json({
+          status: 200,
+          message: 'The office has been deleted successfully',
+        });
+      }
     });
-  }
 };
