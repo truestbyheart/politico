@@ -21,6 +21,7 @@ const create = () => {
         firstname VARCHAR(120) NOT NULL,
         lastname VARCHAR(120) NOT NULL,
         othername VARCHAR(120) NOT NULL,
+        password VARCHAR(300) NOT NULL,
         email VARCHAR(125) NOT NULL,
         phonenumber VARCHAR(10) NOT NULL,
         passporturl VARCHAR(125) NOT NULL,
