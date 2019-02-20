@@ -35,10 +35,10 @@ export const isMissingValue = (body) => {
     return false;
   }
   if (missings.length === 1) {
-    return `${missings} is empty, created but not stored`;
+    return `${missings} is empty`;
   }
 
-  return `${missings} are empty, created but not stored`;
+  return `${missings} are empty`;
 };
 
 
