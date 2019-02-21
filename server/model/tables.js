@@ -44,7 +44,7 @@ const create = () => {
 
   const vote = `CREATE TABLE IF NOT EXISTS vote(
        id SERIAL UNIQUE NOT NULL,
-       createdOn TIMESTAMP,
+       createdOn TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
        createdBy INTEGER REFERENCES users(id) ON DELETE CASCADE ,
        office INTEGER REFERENCES offices(id) ON DELETE CASCADE,
        candidate INTEGER REFERENCES candidates(id) ON DELETE CASCADE,
