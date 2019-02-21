@@ -22,6 +22,7 @@ const candidate = (req, res) => {
               });
             }
           })
+          // eslint-disable-next-line no-unused-vars
           .catch((e) => {
             res.status(201).json({
               status: 201,
@@ -29,8 +30,8 @@ const candidate = (req, res) => {
             });
           });
       } else {
-        res.status(200).json({
-          status: 200,
+        res.status(409).json({
+          status: 409,
           message: 'candidate already exists',
         });
       }
