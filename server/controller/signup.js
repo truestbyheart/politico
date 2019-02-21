@@ -1,6 +1,12 @@
 import { genSaltSync, hashSync } from 'bcryptjs';
+import { sign } from 'jsonwebtoken';
+import dotenv from 'custom-env';
 import pool from '../model/connection';
 import { isMissingValue } from '../helper/helper';
+
+const env = process.env.NODE_ENV || 'development';
+const cleanEnv = env.replace(/ /g, '');
+dotenv.env(cleanEnv);
 
 const singUp = ({ body }, res) => {
   const firstname = body.firstname.trim();
@@ -31,9 +37,11 @@ const singUp = ({ body }, res) => {
               .then((results) => {
                 if (results.rowCount === 1) {
                   if (results.rowCount === 1) {
+                    const token = sign({ email, isAdmin: false }, process.env.HASH, { expiresIn: '24h' });
                     res.status(201).json({
                       status: 201,
-                      message: 'Account successfully created',
+                      token,
+                      data: cleanBody,
                     });
                   } else {
                     res.status(500).json({
