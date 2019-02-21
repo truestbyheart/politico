@@ -9,6 +9,7 @@ import candidate from './route/candidate';
 import signupUser from './controller/signup';
 import jwtverifier from './middleware/verify';
 import isAdmin from './middleware/adminVerify';
+import result from './route/results';
 
 
 export const app = express();
