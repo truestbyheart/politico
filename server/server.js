@@ -10,7 +10,7 @@ export const app = express();
 export const PORT = process.env.PORT || 3200;
 app.use(bodyParser.json());
 
-app.use('/api/v1/signup/', signupUser);
+app.use('/api/v1/auth/signup/', signupUser);
 app.use('/api/v1/parties/', partiesRouter);
 app.use('/api/v1/offices/', officesRouter);
 app.use('/', defaultRoute);
