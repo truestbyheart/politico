@@ -43,11 +43,12 @@ const create = () => {
    )`;
 
   const vote = `CREATE TABLE IF NOT EXISTS vote(
-       id SERIAL PRIMARY KEY,
+       id SERIAL UNIQUE NOT NULL,
        createdOn TIMESTAMP,
-       createdBy INTEGER NOT NULL,
-       office INTEGER NOT NULL,
-       candidate INTEGER NOT NULL
+       createdBy INTEGER REFERENCES users(id) ON DELETE CASCADE ,
+       office INTEGER REFERENCES offices(id) ON DELETE CASCADE,
+       candidate INTEGER REFERENCES candidates(id) ON DELETE CASCADE,
+       PRIMARY KEY (office, createdBy)
    )`;
 
   const execQuery = `${partyTable}; ${officeTable}; ${userTable}; ${candidateTable}; ${petitionTable}; ${vote}; `;
