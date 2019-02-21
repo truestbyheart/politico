@@ -6,16 +6,22 @@ const jwtVerifier = (req, res, next) => {
   if (bearerHeader !== undefined) {
     const bearer = bearerHeader.split(' ');
     const bearerToken = bearer[1];
-    jwt.verify(bearerToken, process.env.HASH, (err, decoded) => {
-      if (err) {
-        res.sendStatus(403);
-      } else {
-        req.userData = decoded;
-      }
-    });
+    const decoded = jwt.verify(bearerToken, process.env.HASH);
+    if (!decoded) {
+      res.status(401).json({
+        status: 401,
+        message: 'please check your token or make sure your authorized',
+      });
+    } else {
+      req.userData = decoded;
+    }
+
     next();
   } else {
-    res.sendStatus(403);
+    res.status(401).json({
+      status: 401,
+      message: 'please check your token or make sure your authorized',
+    });
   }
 };
 
