@@ -4,6 +4,7 @@ import partiesRouter from './route/parties';
 import officesRouter from './route/offices';
 import defaultRoute from './controller/default';
 import login from './route/login';
+import candidate from './route/candidate';
 import signupUser from './controller/signup';
 import jwtverifier from './middleware/verify';
 import isAdmin from './middleware/adminVerify';
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({
 
 app.use('/api/v1/parties/', jwtverifier, isAdmin, partiesRouter);
 app.use('/api/v1/offices/', jwtverifier, isAdmin, officesRouter);
+app.use('/api/v1/candidate', jwtverifier, isAdmin, candidate);
 app.use('/api/v1/login/', login);
 app.use('/api/v1/signup/', signupUser);
 app.use('/', defaultRoute);
