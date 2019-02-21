@@ -45,10 +45,6 @@ export const partyPropertySpecs = (body) => {
   if (!body.hasOwnProperty('abbreviation')) {
     missing.push('abbreviation');
   }
-  if (!body.hasOwnProperty('address')) {
-    missing.push('address');
-  }
-
   return `Please make sure to include ${missing}`;
 };
 
