@@ -20,13 +20,13 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
+app.use('/api/v1/auth/signup/', signupUser);
 app.use('/api/v1/parties/', jwtverifier, isAdmin, partiesRouter);
 app.use('/api/v1/offices/', jwtverifier, isAdmin, officesRouter);
 app.use('/api/v1/auth/reset/', reset);
 app.use('/api/v1/vote', jwtverifier, vote);
 app.use('/api/v1/offices/', jwtverifier, isAdmin, candidate);
 app.use('/api/v1/login/', login);
-app.use('/api/v1/signup/', signupUser);
 app.use('/', defaultRoute);
 
 
