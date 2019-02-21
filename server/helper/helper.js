@@ -1,25 +1,3 @@
-export const ifExist = ({ name, logoUrl }, array) => {
-  if (array.length >= 0) {
-    for (let i = 0; i < array.length; i++) {
-      if (name === array[i].name || logoUrl === array[i].logoUrl) {
-        return true;
-      }
-    }
-    return false;
-  }
-};
-
-export const ifOfficeExist = ({ name }, array) => {
-  if (array.length >= 0) {
-    for (let i = 0; i < array.length; i++) {
-      if (name === array[i].name) {
-        return true;
-      }
-    }
-    return false;
-  }
-};
-
 export const isMissingValue = (body) => {
   const arrayOfWords = Object.values(body);
   const property = Object.keys(body);
@@ -41,33 +19,34 @@ export const isMissingValue = (body) => {
   return `${missings} are empty`;
 };
 
-
-export const increment = (body, array) => {
-  const data = body;
-  if (!isMissingValue(body)) {
-    if (array.length === 0) {
-      data.id = 1;
-      array.push(body);
-    } else {
-      data.id = array.length + 1;
-      array.push(body);
-    }
-  } else {
-    return isMissingValue(body);
-  }
-};
-
-
 export const partyEntityValidator = (body) => {
   if (
     body.hasOwnProperty('name')
     && body.hasOwnProperty('hqAddress')
     && body.hasOwnProperty('logoUrl')
+    && body.hasOwnProperty('abbreviation')
   ) {
     return true;
   }
+  return false;
 };
 
+export const partyPropertySpecs = (body) => {
+  const missing = [];
+  if (!body.hasOwnProperty('name')) {
+    missing.push('name');
+  }
+  if (!body.hasOwnProperty('hqAddress')) {
+    missing.push('hqAddress');
+  }
+  if (!body.hasOwnProperty('logoUrl')) {
+    missing.push('logoUrl');
+  }
+  if (!body.hasOwnProperty('abbreviation')) {
+    missing.push('abbreviation');
+  }
+  return `Please make sure to include ${missing}`;
+};
 
 export const officeEntityValidator = (body) => {
   if (
@@ -78,32 +57,14 @@ export const officeEntityValidator = (body) => {
   }
 };
 
-export const partyPropertySpecs = (body) => {
-  const arrayOfProperty = Object.keys(body);
-  const property = ['name', 'hqAddress', 'logoUrl'];
-  const contains = [];
-
-
-  arrayOfProperty.forEach(p1 => property.forEach((p2) => {
-    if (p1 === p2) {
-      contains.push(p1);
-    }
-  }));
-
-  return `The object  has the properties ${contains} instead of having ${property}`;
-};
-
 export const officePropertySpecs = (body) => {
-  const arrayOfProperty = Object.keys(body);
-  const property = ['name', 'type'];
-  const contains = [];
+  const missing = [];
+  if (!body.hasOwnProperty('name')) {
+    missing.push('name');
+  }
+  if (!body.hasOwnProperty('type')) {
+    missing.push('type');
+  }
 
-
-  arrayOfProperty.forEach(p1 => property.forEach((p2) => {
-    if (p1 === p2) {
-      contains.push(p1);
-    }
-  }));
-
-  return `The object  has the properties ${contains} instead of having ${property}`;
+  return `Please make sure to include ${missing}`;
 };

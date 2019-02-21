@@ -29,10 +29,11 @@ const create = () => {
     )`;
 
   const candidateTable = `CREATE TABLE IF NOT EXISTS candidates(
-       id SERIAL PRIMARY KEY,
-       office INTEGER NOT NULL,
-       party INTEGER NOT NULL,
-       candidate INTEGER NOT NULL
+       id SERIAL UNIQUE NOT NULL,
+       office INTEGER REFERENCES offices  ON DELETE CASCADE,
+       party INTEGER REFERENCES parties ON DELETE CASCADE,
+       candidate INTEGER REFERENCES users ON DELETE CASCADE,
+       PRIMARY KEY (candidate,office)
    )`;
   const petitionTable = `CREATE TABLE IF NOT EXISTS petition(
       id SERIAL PRIMARY KEY,
@@ -43,11 +44,13 @@ const create = () => {
    )`;
 
   const vote = `CREATE TABLE IF NOT EXISTS vote(
-       id SERIAL PRIMARY KEY,
-       createdOn TIMESTAMP,
-       createdBy INTEGER NOT NULL,
-       office INTEGER NOT NULL,
-       candidate INTEGER NOT NULL
+       id SERIAL UNIQUE NOT NULL,
+       createdOn TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+       createdBy INTEGER REFERENCES users(id) ON DELETE CASCADE ,
+       office INTEGER REFERENCES offices(id) ON DELETE CASCADE,
+       candidate INTEGER REFERENCES candidates(id) ON DELETE CASCADE,
+       PRIMARY KEY (office, createdBy)
+
    )`;
 
   const execQuery = `${partyTable}; ${officeTable}; ${userTable}; ${candidateTable}; ${petitionTable}; ${vote}; `;
