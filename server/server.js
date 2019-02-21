@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({
 
 app.use('/api/v1/parties/', jwtverifier, isAdmin, partiesRouter);
 app.use('/api/v1/offices/', jwtverifier, isAdmin, officesRouter);
-app.use('/api/v1/candidate', jwtverifier, isAdmin, candidate);
+app.use('/api/v1/offices/', jwtverifier, isAdmin, candidate);
 app.use('/api/v1/login/', login);
 app.use('/api/v1/signup/', signupUser);
 app.use('/', defaultRoute);

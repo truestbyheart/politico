@@ -1,65 +1,40 @@
 import pool from '../model/connection';
-import { isMissingValue } from '../helper/helper';
 
-const candidate = ({ body }, res) => {
-  const { name, office, party } = body;
-  const getIds = `SELECT id FROM offices WHERE name=$1
-   UNION SELECT id FROM parties WHERE name=$2 
-   UNION SELECT id FROM users WHERE lastname=$3`;
-  // check for empty values
-  const response = isMissingValue(body);
+const candidate = (req, res) => {
+  const { id } = req.params;
+  const { party, user } = req.body;
 
-  if (!response) {
-    pool.query(getIds, [office, party, name])
-      .then((results) => {
-        if (results.rowCount === 3) {
-          // check for duplicates
-          const duplicatecheck = 'SELECT * FROM candidates WHERE candidate=$1';
-          pool.query(duplicatecheck, [results.rows[1].id])
-            .then((results) => {
-              if (results.rowCount === 1) {
-                res.status(200).json({
-                  status: 200,
-                  message: 'candidate already exists',
-                });
-              } else {
-                // insert data
-                const insQuery = 'INSERT INTO candidates(office,party,candidate) VALUES($1,$2,$3)';
-                pool.query(insQuery, [results.rows[3].id, results.rows[0].id, results.rows[1]].id)
-                  .then((results) => {
-                    if (results.rowCount === 1) {
-                      res.status(201).json({
-                        status: 201,
-                        message: 'Candidate created successfully',
-                      });
-                    } else {
-                      res.status(503).json({
-                        status: 503,
-                        message: 'Cant handle request please try again letter',
-                      });
-                    }
-                  });
-              }
+  // check duplicate
+  const duplcheck = 'SELECT * FROM candidates WHERE candidate=$1';
+  pool.query(duplcheck, [user])
+    .then((results) => {
+      if (results.rowCount === 0) {
+        const query = `INSERT INTO candidates(office,party,candidate)
+                       VALUES ($1,$2,$3)`;
+
+        pool.query(query, [id, party, user])
+          .then((results) => {
+            if (results.rowCount === 1) {
+              res.status(201).json({
+                status: 201,
+                message: 'candidate has been created successfully',
+                data: req.body,
+              });
+            }
+          })
+          .catch((e) => {
+            res.status(201).json({
+              status: 201,
+              message: 'Check if the information is registered on the system',
             });
-        } else {
-          const unregistered = [];
-
-          if (!body.hasOwnProperty('party')) { unregistered.push('party'); }
-          if (!body.hasOwnProperty('name')) { unregistered.push('candidate'); }
-          if (!body.hasOwnProperty('office')) { unregistered.push('office'); }
-
-          res.status(404).json({
-            status: 404,
-            message: `the following are not registered on the system: ${unregistered}`,
           });
-        }
-      });
-  } else {
-    res.status(200).json({
-      status: 200,
-      message: response,
+      } else {
+        res.status(200).json({
+          status: 200,
+          message: 'candidate already exists',
+        });
+      }
     });
-  }
 };
 
 export default candidate;

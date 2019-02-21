@@ -3,6 +3,6 @@ import candidate from '../controller/candidate';
 
 const router = express.Router();
 
-router.post('/', candidate);
+router.post('/:id/register', candidate);
 
 export default router;
